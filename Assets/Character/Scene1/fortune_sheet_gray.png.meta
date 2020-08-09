@@ -1,0 +1,602 @@
+fileFormatVersion: 2
+guid: 1aa2794b65b0a46a18c42e2075a5b9fd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3236112734760689825
+    second: fortune_sheet_gray_0
+  - first:
+      213: 9133831365684586075
+    second: fortune_sheet_gray_1
+  - first:
+      213: -1316125793984371235
+    second: fortune_sheet_gray_2
+  - first:
+      213: -363340227018614065
+    second: fortune_sheet_gray_3
+  - first:
+      213: 4294168138236377881
+    second: fortune_sheet_gray_4
+  - first:
+      213: -1991611889012163460
+    second: fortune_sheet_gray_5
+  - first:
+      213: 8189550334894810051
+    second: fortune_sheet_gray_6
+  - first:
+      213: 4940628851901086647
+    second: fortune_sheet_gray_7
+  - first:
+      213: 1185500941501081100
+    second: fortune_sheet_gray_8
+  - first:
+      213: -4531232238088884739
+    second: fortune_sheet_gray_9
+  - first:
+      213: -1452872774964494495
+    second: fortune_sheet_gray_10
+  - first:
+      213: -684595726022495994
+    second: fortune_sheet_gray_11
+  - first:
+      213: 421320270324505346
+    second: fortune_sheet_gray_12
+  - first:
+      213: 7369160585845434032
+    second: fortune_sheet_gray_13
+  - first:
+      213: 6985191571344198874
+    second: fortune_sheet_gray_14
+  - first:
+      213: 3501155885717318437
+    second: fortune_sheet_gray_15
+  - first:
+      213: 3126551555609032721
+    second: fortune_sheet_gray_16
+  - first:
+      213: 4485305712722035548
+    second: fortune_sheet_gray_17
+  - first:
+      213: 2539748167924612204
+    second: fortune_sheet_gray_0
+  - first:
+      213: -8448854695347830067
+    second: fortune_sheet_gray_1
+  - first:
+      213: -5196797168890310977
+    second: fortune_sheet_gray_2
+  - first:
+      213: -9201330153014112272
+    second: fortune_sheet_gray_3
+  - first:
+      213: -7170804191755115325
+    second: fortune_sheet_gray_4
+  - first:
+      213: 8030305771226718238
+    second: fortune_sheet_gray_5
+  - first:
+      213: -5914522489086024682
+    second: fortune_sheet_gray_6
+  - first:
+      213: -442710993231446368
+    second: fortune_sheet_gray_7
+  - first:
+      213: 4832245818495728876
+    second: fortune_sheet_gray_8
+  - first:
+      213: -3389894902593159355
+    second: fortune_sheet_gray_9
+  - first:
+      213: -6048691677094512110
+    second: fortune_sheet_gray_10
+  - first:
+      213: 1197791632296249576
+    second: fortune_sheet_gray_11
+  - first:
+      213: 5074104429687894277
+    second: fortune_sheet_gray_12
+  - first:
+      213: -6757785913231980926
+    second: fortune_sheet_gray_13
+  - first:
+      213: 8174984303811752360
+    second: fortune_sheet_gray_14
+  - first:
+      213: -5995715595185549551
+    second: fortune_sheet_gray_15
+  - first:
+      213: 9005045420164333232
+    second: fortune_sheet_gray_16
+  - first:
+      213: 7303528851992764895
+    second: fortune_sheet_gray_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fortune_sheet_gray_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 588
+        width: 117
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c7818a08ffe3320800000000000000
+      internalID: 2539748167924612204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_1
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 588
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc2c6e42b63afba80800000000000000
+      internalID: -8448854695347830067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_2
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 588
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbe898a328441e7b0800000000000000
+      internalID: -5196797168890310977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_3
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 588
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ffc0800afe4e4080800000000000000
+      internalID: -9201330153014112272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_4
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 588
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b31659b23f79b30800000000000000
+      internalID: 4294168138236377881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 394
+        width: 117
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c3cf8f98f5c54e0800000000000000
+      internalID: -1991611889012163460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_6
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 394
+        width: 116
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c32695b3a027a170800000000000000
+      internalID: 8189550334894810051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_7
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 394
+        width: 116
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bb3c94a3c3a09440800000000000000
+      internalID: 4940628851901086647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_8
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 394
+        width: 116
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c06201343deb37010800000000000000
+      internalID: 1185500941501081100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_9
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 394
+        width: 116
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfde9e57944dd11c0800000000000000
+      internalID: -4531232238088884739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 201
+        width: 117
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16fb768a8eb56dbe0800000000000000
+      internalID: -1452872774964494495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_11
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 201
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601bda770d3df76f0800000000000000
+      internalID: -684595726022495994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_12
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 201
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b1d59bd84d8d500800000000000000
+      internalID: 421320270324505346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_13
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 201
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b660246284844660800000000000000
+      internalID: 7369160585845434032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_14
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 201
+        width: 116
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc060a99b260f060800000000000000
+      internalID: 6985191571344198874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_15
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 7
+        width: 117
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52be2776aba969030800000000000000
+      internalID: 3501155885717318437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_16
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 7
+        width: 116
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118750c131eb36b20800000000000000
+      internalID: 3126551555609032721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortune_sheet_gray_17
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 7
+        width: 116
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53c3d318c10f3e30800000000000000
+      internalID: 4485305712722035548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
