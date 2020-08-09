@@ -5,17 +5,17 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>
     <key>CFBundleExecutable</key>
-    <string>PixelShiba</string>
+    <string>IntoThePixelWorld</string>
     <key>CFBundleGetInfoString</key>
     <string>Unity Player version 2019.4.1f1 (e6c045e14e4e). (c) 2020 Unity Technologies ApS. All rights reserved.</string>
     <key>CFBundleIconFile</key>
     <string>PlayerIcon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.PixelShiba.PixelShiba</string>
+    <string>com.PixelShiba.IntoThePixelWorld</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>PixelShiba</string>
+    <string>IntoThePixelWorld</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

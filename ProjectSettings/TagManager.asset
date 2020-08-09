@@ -41,14 +41,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: lightray_1
-    uniqueID: 2847512877
-    locked: 0
-  - name: lightray_2
-    uniqueID: 1382555165
-    locked: 0
-  - name: ground
-    uniqueID: 671145139
+  - name: back
+    uniqueID: 936832981
     locked: 0
   - name: grass
     uniqueID: 2365021943
@@ -62,18 +56,15 @@ TagManager:
   - name: npc_behind
     uniqueID: 2791548455
     locked: 0
-  - name: front_bushes
+  - name: ground
     uniqueID: 2057154803
-    locked: 0
-  - name: top_trees
-    uniqueID: 1770228091
-    locked: 0
-  - name: big_bushes
-    uniqueID: 2512711753
     locked: 0
   - name: npc
     uniqueID: 3518874661
     locked: 0
   - name: shiba
     uniqueID: 3718710645
+    locked: 0
+  - name: front
+    uniqueID: 2512711753
     locked: 0
