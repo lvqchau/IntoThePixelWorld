@@ -10,6 +10,9 @@ public class ShibaControl : MonoBehaviour
     public float speed = 3.5f;
     public Vector3 mousePosition;
     public bool isMoving = false;
+    public AudioSource shibaSrc;
+    public AudioClip shibaSleepFx;
+    public AudioClip shibaWalkFx;
 
     private Vector2 velocity;
     private Vector2 movement;
@@ -24,12 +27,20 @@ public class ShibaControl : MonoBehaviour
         idleAnimation += Time.deltaTime;
         if (idleAnimation > Random.Range(8, 12)) {
             anim.SetBool("isSleeping", true);
+            shibaSrc.clip = shibaSleepFx;
+            
         } 
 
         if (Input.GetMouseButtonDown(0)) {
             idleAnimation = 0;
             SetTargetPosition();
         }
+
+        if (isMoving) {
+            shibaSrc.clip = shibaWalkFx;
+        }
+        shibaSrc.Play();
+
     }
 
     public void SetTargetPosition() {

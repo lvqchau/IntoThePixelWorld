@@ -6,7 +6,7 @@ using UnityEngine;
 public class DiaglogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
-    public void TriggerDialogue () {
+    public void TriggerDialogue() {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
