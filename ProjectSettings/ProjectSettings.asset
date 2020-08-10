@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: PixelShiba
   productName: IntoThePixelWorld
-  defaultCursor: {fileID: 2800000, guid: d0bb184a42bf44026a56dadd5982dcc3, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
