@@ -28,7 +28,7 @@ public class ShibaControl : MonoBehaviour
         if (idleAnimation > Random.Range(8, 12)) {
             anim.SetBool("isSleeping", true);
             shibaSrc.clip = shibaSleepFx;
-            
+            shibaSrc.Play();
         } 
 
         if (Input.GetMouseButtonDown(0)) {
@@ -38,8 +38,9 @@ public class ShibaControl : MonoBehaviour
 
         if (isMoving) {
             shibaSrc.clip = shibaWalkFx;
+            shibaSrc.Play();
         }
-        shibaSrc.Play();
+        
 
     }
 
@@ -59,6 +60,7 @@ public class ShibaControl : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         isMoving = false;
         anim.SetBool("isMove", false);
+        shibaSrc.Stop();
         rb.velocity = Vector2.zero;
     }
 
@@ -72,6 +74,7 @@ public class ShibaControl : MonoBehaviour
             rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
             Move();
         } else {
+            shibaSrc.Stop();
             rb.velocity = Vector2.zero;
             anim.SetBool("isMove", false);
         }
@@ -80,6 +83,7 @@ public class ShibaControl : MonoBehaviour
     public void Move() {
         transform.position = Vector3.MoveTowards(transform.position, mousePosition, speed*Time.deltaTime);
         if (transform.position == mousePosition) {
+            shibaSrc.Stop();
             anim.SetBool("isMove", false);
             isMoving = false;
         }
