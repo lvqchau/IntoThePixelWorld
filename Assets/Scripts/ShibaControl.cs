@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShibaControl : MonoBehaviour
@@ -44,13 +45,24 @@ public class ShibaControl : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) {
             idleAnimation = 0;
-            SetTargetPosition();
+            if (!IsOverUI()) {
+                SetTargetPosition();
+            }
         }
-
-        if (isMoving) {
+        
+        if (isMoving && !IsOverUI()) {
             // StartCoroutine(PlaySounds());
            Move();
         }
+    }
+
+    public bool IsOverUI() {
+        // return true;
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current); 
+        eventDataCurrentPosition.position = new Vector2(mousePosition.x, mousePosition.y);
+         List<RaycastResult> results = new List<RaycastResult>();
+          EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+          return results.Count > 0;
     }
 
     public void SetTargetPosition() {
