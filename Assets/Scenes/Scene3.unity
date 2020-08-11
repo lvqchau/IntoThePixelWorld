@@ -1359,12 +1359,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124610751}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9656, y: -2.8704, z: 0}
-  m_LocalScale: {x: 2.5313258, y: 2.5313258, z: 2.5313258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 397.1217, y: -229.55899, z: -7197.711}
+  m_LocalScale: {x: 202.44168, y: 202.44168, z: 202.44168}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1248922257}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172150409
 GameObject:
@@ -1596,6 +1596,8 @@ RectTransform:
   - {fileID: 1214073648}
   - {fileID: 186652419}
   - {fileID: 1599649496}
+  - {fileID: 1350814923}
+  - {fileID: 1124610753}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1759,12 +1761,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350814921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.341, y: -2.89, z: 0}
-  m_LocalScale: {x: 2.5313258, y: 2.5313258, z: 2.5313258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 427.14417, y: -231.1265, z: -7197.711}
+  m_LocalScale: {x: 202.44168, y: 202.44168, z: 202.44168}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1248922257}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369833651
 GameObject:
@@ -2535,7 +2537,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 936832981
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6af9272096e524ea0920c3b6bf7c5795, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2899,7 +2901,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.8
-  m_Color: {r: 0.003921569, g: 0.6156863, b: 0.52156866, a: 1}
+  m_Color: {r: 0.18689926, g: 0.5283019, b: 0.47577846, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0.42
   m_ApplyToSortingLayers: addd596ff75ef78c7505a7dd25c4bdd1
