@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShibaControl : MonoBehaviour
@@ -10,6 +11,9 @@ public class ShibaControl : MonoBehaviour
     public float speed = 3.5f;
     public Vector3 mousePosition;
     public bool isMoving = false;
+    public AudioSource shibaSrc;
+    public AudioClip shibaSleepFx;
+    public AudioClip shibaWalkFx;
 
     private Vector2 velocity;
     private Vector2 movement;
@@ -20,16 +24,45 @@ public class ShibaControl : MonoBehaviour
         velocity = new Vector2(speed, speed);
     }
 
+    IEnumerator PlaySounds() {
+        shibaSrc.clip = shibaWalkFx;
+        if (!shibaSrc.isPlaying) {
+            shibaSrc.Play();
+        }
+        else if (shibaSrc.isPlaying) {
+            yield return new WaitForSeconds(1);
+            shibaSrc.Stop ();
+        }
+    }
+
     void Update() {
         idleAnimation += Time.deltaTime;
         if (idleAnimation > Random.Range(8, 12)) {
             anim.SetBool("isSleeping", true);
+            // shibaSrc.clip = shibaSleepFx;
+            // shibaSrc.Play();
         } 
 
         if (Input.GetMouseButtonDown(0)) {
             idleAnimation = 0;
-            SetTargetPosition();
+            if (!IsOverUI()) {
+                SetTargetPosition();
+            }
         }
+        
+        if (isMoving && !IsOverUI()) {
+            // StartCoroutine(PlaySounds());
+           Move();
+        }
+    }
+
+    public bool IsOverUI() {
+        // return true;
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current); 
+        eventDataCurrentPosition.position = new Vector2(mousePosition.x, mousePosition.y);
+         List<RaycastResult> results = new List<RaycastResult>();
+          EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+          return results.Count > 0;
     }
 
     public void SetTargetPosition() {
@@ -69,6 +102,7 @@ public class ShibaControl : MonoBehaviour
     public void Move() {
         transform.position = Vector3.MoveTowards(transform.position, mousePosition, speed*Time.deltaTime);
         if (transform.position == mousePosition) {
+            // shibaSrc.Stop();
             anim.SetBool("isMove", false);
             isMoving = false;
         }
