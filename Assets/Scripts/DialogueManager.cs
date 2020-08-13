@@ -68,7 +68,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void DisplayNextSentence() {
-        string sentence;
+        // string sentence;
         if (sentences.Count == 0) {
             dialogueText.text = "";
             EndDialogue();

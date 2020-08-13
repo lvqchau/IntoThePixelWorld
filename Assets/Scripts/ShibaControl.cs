@@ -22,6 +22,7 @@ public class ShibaControl : MonoBehaviour
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         velocity = new Vector2(speed, speed);
+        Physics.IgnoreLayerCollision(9, 10);
     }
 
     IEnumerator PlaySounds() {
