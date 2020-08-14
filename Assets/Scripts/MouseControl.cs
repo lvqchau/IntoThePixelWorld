@@ -9,17 +9,19 @@ public class MouseControl : MonoBehaviour
     public Texture2D cursor;
     public Texture2D cursorDefault;
 
-    private void OnMouseOver() {
+    public void OnMouseOver() {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);    
     }
 
     private void OnMouseExit() {
-        nameText.text = "";
+        if (nameText.text != "continue")
+            nameText.text = "";
         Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
     }
 
     void Start() {
-        nameText.text = "";
+        if (nameText.text != "continue")
+            nameText.text = "";
         Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
     }
 }

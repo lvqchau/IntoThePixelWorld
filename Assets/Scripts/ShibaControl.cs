@@ -41,8 +41,6 @@ public class ShibaControl : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log("helloMove");
-        Debug.Log(canMove);
         idleAnimation += Time.deltaTime;
         if (idleAnimation > Random.Range(8, 12) && canMove) {
             anim.SetBool("isSleeping", true);

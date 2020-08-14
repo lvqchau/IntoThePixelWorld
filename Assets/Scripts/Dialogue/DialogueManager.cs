@@ -8,7 +8,6 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     
-    public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Dialogue dialogue;
     private Queue<string> sentences;
@@ -31,16 +30,15 @@ public class DialogueManager : MonoBehaviour
     }
 
     void Update() {
-        if (dialogueText.text == curSentence) {
-            //wait here
-            DisplayNextSentence();
+        if (Input.GetMouseButtonDown(0)) {
+            // wait here
+            if (curSentence == dialogueText.text) {
+                DisplayNextSentence();
+            }
         }
     }
 
     public void StartDialogue(Dialogue dialogue) {
-        Debug.Log("hi");
-        if (dialogue.name != "none")
-            nameText.text = dialogue.name;
         sentences.Clear();
         foreach (string sentence in dialogue.sentences) {
             sentences.Enqueue(sentence);
@@ -52,25 +50,15 @@ public class DialogueManager : MonoBehaviour
         curSentence = sentences.Dequeue();
         int length = curSentence.ToCharArray().Length;
         for (int i = 0; i < length; i++) {
-            // Debug.Log(letter);
             dialogueText.text += curSentence.ToCharArray()[i];
-            // if (i == length-1) {
-                // yield return new WaitForSeconds(10);
-            // } else {
             yield return new WaitForSeconds(typingSpeed);    
-            // }
         }
-        // foreach (char letter in curSentence.ToCharArray()) {
-        //     Debug.Log(letter);
-        //     dialogueText.text += letter;
-        //     yield return new WaitForSeconds(typingSpeed);
-        // }
     }
 
     public void DisplayNextSentence() {
-        // string sentence;
         if (sentences.Count == 0) {
-            dialogueText.text = "";
+            dialogueText.alignment = TextAlignmentOptions.Center;
+            dialogueText.text = "NOW";
             EndDialogue();
             return;
         }

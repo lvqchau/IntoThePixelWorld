@@ -14,7 +14,6 @@ public class NPCController : MonoBehaviour
     }
 
     public void OnMouseDown() {
-        Debug.Log("hi");
     }
 
 }
