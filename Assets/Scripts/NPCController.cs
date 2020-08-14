@@ -8,7 +8,7 @@ using TMPro;
 
 public class NPCController : MonoBehaviour
 {
-    public Dialogue dialogue;
+    public Dialogue[] dialogue;
 
     void Start() {
     }

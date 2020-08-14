@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShibaControl : MonoBehaviour
 {
-    public float idleAnimation = 0f;
+    private float idleAnimation = 0f;
     public Animator anim;
-    public float speed = 3.5f;
-    public Vector3 mousePosition;
+    public bool canMove;
+    public TextMeshProUGUI text;
+    private float speed = 3.5f;
+    private Vector3 mousePosition;
     public bool isMoving = false;
     public AudioSource shibaSrc;
     public AudioClip shibaSleepFx;
@@ -21,6 +24,7 @@ public class ShibaControl : MonoBehaviour
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        canMove = true;
         velocity = new Vector2(speed, speed);
         Physics.IgnoreLayerCollision(9, 10);
     }
@@ -37,21 +41,23 @@ public class ShibaControl : MonoBehaviour
     }
 
     void Update() {
+        Debug.Log("helloMove");
+        Debug.Log(canMove);
         idleAnimation += Time.deltaTime;
-        if (idleAnimation > Random.Range(8, 12)) {
+        if (idleAnimation > Random.Range(8, 12) && canMove) {
             anim.SetBool("isSleeping", true);
             // shibaSrc.clip = shibaSleepFx;
             // shibaSrc.Play();
         } 
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && canMove) {
             idleAnimation = 0;
             if (!IsOverUI()) {
                 SetTargetPosition();
             }
         }
         
-        if (isMoving && !IsOverUI()) {
+        if (isMoving && canMove) {
             // StartCoroutine(PlaySounds());
            Move();
         }
@@ -67,14 +73,21 @@ public class ShibaControl : MonoBehaviour
     }
 
     public void SetTargetPosition() {
+        RectTransform rt = text.GetComponent<RectTransform>();
+        float posX = rt.anchoredPosition.x;
+        float posY = rt.anchoredPosition.y;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
         anim.SetBool("isSleeping", false);
         anim.SetBool("isMove", true);
         isMoving = true;
         if (mousePosition.x < transform.position.x) {
+            text.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            rt.anchoredPosition = new Vector2((float)-0.6941, posY);
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         } else if (mousePosition.x >= transform.position.x) {
+            rt.anchoredPosition = new Vector2((float)0.6941, posY);
+            text.transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }

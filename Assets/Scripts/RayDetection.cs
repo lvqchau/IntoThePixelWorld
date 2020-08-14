@@ -7,8 +7,10 @@ public class RayDetection : MonoBehaviour
 {
     public Texture2D cursor;
     public Texture2D cursorDefault;
+    
 
     void Start() {
+        
     }
 
     // Update is called once per frame
@@ -23,17 +25,12 @@ public class RayDetection : MonoBehaviour
             if (selection.CompareTag("Interactable")) {
                 DisplayTitle(hit.collider);
             }
-            
-        }
-
-        if (Input.GetMouseButton(0)) {
-            //click
         }
     }
 
     private void DisplayTitle(Collider2D collide) {
         Transform titleHolder = collide.gameObject.transform.Find("Title");
         TextMeshProUGUI title = titleHolder.GetComponentInChildren<TextMeshProUGUI>();
-        title.text = collide.gameObject.name;
+        // title.text = collide.gameObject.name;
     }
 }
