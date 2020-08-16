@@ -687,7 +687,7 @@ MonoBehaviour:
   myFx: {fileID: 217614750}
   hoverFx: {fileID: 8300000, guid: 33f4d9d34881c4f4bb5357dfb24b38bf, type: 3}
   clickFx: {fileID: 8300000, guid: 2fdc8de7837684689bca6d6639d5ab14, type: 3}
-  mouseRender: {fileID: 1581686345}
+  mouseRenderer: {fileID: 1581686345}
   mouseSprite: {fileID: 21300000, guid: 6a1294b7d8a24460589c0484cf39e290, type: 3}
 --- !u!114 &217614752
 MonoBehaviour:
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   myFx: {fileID: 906822544}
   hoverFx: {fileID: 8300000, guid: 33f4d9d34881c4f4bb5357dfb24b38bf, type: 3}
   clickFx: {fileID: 8300000, guid: 2fdc8de7837684689bca6d6639d5ab14, type: 3}
-  mouseRender: {fileID: 1009932883}
+  mouseRenderer: {fileID: 1009932883}
   mouseSprite: {fileID: 21300000, guid: 6a1294b7d8a24460589c0484cf39e290, type: 3}
 --- !u!1 &1009932882
 GameObject:
@@ -2337,7 +2337,7 @@ MonoBehaviour:
   myFx: {fileID: 1097214961}
   hoverFx: {fileID: 8300000, guid: 33f4d9d34881c4f4bb5357dfb24b38bf, type: 3}
   clickFx: {fileID: 8300000, guid: 2fdc8de7837684689bca6d6639d5ab14, type: 3}
-  mouseRender: {fileID: 1628446601}
+  mouseRenderer: {fileID: 1628446601}
   mouseSprite: {fileID: 21300000, guid: 6a1294b7d8a24460589c0484cf39e290, type: 3}
 --- !u!82 &1097214961
 AudioSource:

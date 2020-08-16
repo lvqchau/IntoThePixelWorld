@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class DLumberjack : MonoBehaviour
@@ -11,28 +12,30 @@ public class DLumberjack : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
-    private string condition = "noPaper";
+    private string condition;
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
     private DController dControllerScript;
     
     //each dialogue has own condition
-    //Lumberjack: noPaper, havePaper
+    //Lumberjack: noPeace, donePeace, havePeace
 
     public void setKeyCondition() {
         condition = "havePaper";
     }
 
     void OnMouseDown() {
-        if (dControllerScript.isInDialogue == "none" ||
-            dControllerScript.isInDialogue == "lumberjack") {
-            if (sentences.Count == initialCount) {
-                shibaScript.SetTargetPosition();
-                shibaScript.Move();
-                StartCoroutine("WaitForDoneMoving");
-            } else {
-                DisplayNextSentence();
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+            if (dControllerScript.isInDialogue == "none" ||
+                dControllerScript.isInDialogue == "lumberjack") {
+                if (sentences.Count == initialCount) {
+                    shibaScript.SetTargetPosition();
+                    shibaScript.Move();
+                    StartCoroutine("WaitForDoneMoving");
+                } else {
+                    DisplayNextSentence();
+                }
             }
         }
     }
@@ -43,6 +46,7 @@ public class DLumberjack : MonoBehaviour
     }
 
     void Start() {
+        condition = "noPeace";
         sentences = new Queue<DSentence>();
         GameObject shiba = GameObject.Find("shiba");
         shibaScript = shiba.GetComponent<ShibaControl>();
@@ -56,8 +60,10 @@ public class DLumberjack : MonoBehaviour
     }
 
     private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "havePaper") {
+        if (condition == "donePeace") {
             dialogueIndex = 1;
+        } else if (condition == "havePeace") {
+            dialogueIndex = 2;
         }
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {

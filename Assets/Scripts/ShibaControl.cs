@@ -10,8 +10,7 @@ public class ShibaControl : MonoBehaviour
     private float idleAnimation = 0f;
     public Animator anim;
     public bool canMove;
-    public TextMeshProUGUI text;
-    private float speed = 3.5f;
+    private float speed = 3f;
     private Vector3 mousePosition;
     public bool isMoving = false;
     public AudioSource shibaSrc;
@@ -50,42 +49,34 @@ public class ShibaControl : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canMove) {
             idleAnimation = 0;
-            if (!IsOverUI()) {
+            // if (!IsOverUI()) {
                 SetTargetPosition();
-            }
+            // }
         }
         
         if (isMoving && canMove) {
             // StartCoroutine(PlaySounds());
-           Move();
+            Move();
         }
     }
 
-    public bool IsOverUI() {
-        // return true;
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current); 
-        eventDataCurrentPosition.position = new Vector2(mousePosition.x, mousePosition.y);
-         List<RaycastResult> results = new List<RaycastResult>();
-          EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-          return results.Count > 0;
-    }
+    // public bool IsOverUI() {
+    //     PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current); 
+    //     eventDataCurrentPosition.position = new Vector2(mousePosition.x, mousePosition.y);
+    //     List<RaycastResult> results = new List<RaycastResult>();
+    //     EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+    //     return results.Count > 0;
+    // }
 
     public void SetTargetPosition() {
-        RectTransform rt = text.GetComponent<RectTransform>();
-        float posX = rt.anchoredPosition.x;
-        float posY = rt.anchoredPosition.y;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = transform.position.z;
         anim.SetBool("isSleeping", false);
         anim.SetBool("isMove", true);
         isMoving = true;
         if (mousePosition.x < transform.position.x) {
-            text.transform.localRotation = Quaternion.Euler(0, 180, 0);
-            rt.anchoredPosition = new Vector2((float)-0.6941, posY);
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         } else if (mousePosition.x >= transform.position.x) {
-            rt.anchoredPosition = new Vector2((float)0.6941, posY);
-            text.transform.localRotation = Quaternion.Euler(0, 0, 0);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
     }

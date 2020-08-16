@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class DKeyHolder : MonoBehaviour
@@ -11,28 +12,30 @@ public class DKeyHolder : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
-    private string condition = "noKey";
+    private string condition;
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
     private DController dControllerScript;
     
     //each dialogue has own condition
-    //KeyHolder: noKey, haveKey
+    //KeyHolder: noKey, doneKey, haveKey
 
     public void setKeyCondition() {
         condition = "haveKey";
     }
 
     void OnMouseDown() {
-        if (dControllerScript.isInDialogue == "none" ||
-            dControllerScript.isInDialogue == "keyholder") {
-            if (sentences.Count == initialCount) {
-                shibaScript.SetTargetPosition();
-                shibaScript.Move();
-                StartCoroutine("WaitForDoneMoving");
-            } else {
-                DisplayNextSentence();
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+            if (dControllerScript.isInDialogue == "none" ||
+                dControllerScript.isInDialogue == "keyholder") {
+                if (sentences.Count == initialCount) {
+                    shibaScript.SetTargetPosition();
+                    shibaScript.Move();
+                    StartCoroutine("WaitForDoneMoving");
+                } else {
+                    DisplayNextSentence();
+                }
             }
         }
     }
@@ -43,6 +46,7 @@ public class DKeyHolder : MonoBehaviour
     }
 
     void Start() {
+        condition = "noKey";
         sentences = new Queue<DSentence>();
         GameObject shiba = GameObject.Find("shiba");
         shibaScript = shiba.GetComponent<ShibaControl>();
@@ -56,8 +60,10 @@ public class DKeyHolder : MonoBehaviour
     }
 
     private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "haveKey") {
+        if (condition == "doneKey") {
             dialogueIndex = 1;
+        } else if (condition == "haveKey") {
+            dialogueIndex = 2;
         }
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
