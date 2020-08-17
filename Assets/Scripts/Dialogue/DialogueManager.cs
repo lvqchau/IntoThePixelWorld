@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     void EndDialogue() {
-        if (GetCurrentScene() == "Intro") {
+        if (GetCurrentScene() == "Intro" || GetCurrentScene() == "Scene1Transition") {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

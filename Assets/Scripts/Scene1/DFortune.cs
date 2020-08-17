@@ -25,6 +25,7 @@ public class DFortune : MonoBehaviour
 
     public void setCondition(string cond) {
         condition = cond;
+        TriggerDialogue();
     }
 
     public string getCondition() {
@@ -35,10 +36,6 @@ public class DFortune : MonoBehaviour
         condition = "playDone";
         TriggerDialogue();
         DisplayNextSentence();
-    }
-
-    public void havePlayCondition() {
-        condition = "havePlay";
     }
 
     void OnMouseDown() {
@@ -88,16 +85,7 @@ public class DFortune : MonoBehaviour
     }
 
     private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "playDone") {
-            dialogueIndex = 1;
-        } else if (condition == "havePlay") {
-            dialogueIndex = 2;
-        } else if (condition == "notPlay") {
-            dialogueIndex = 3;
-        } else if (condition == "notWin") {
-            dialogueIndex = 4;
-        } else
-        Debug.Log(condition);
+        dialogueIndex = SetDialogueIndex();
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
             sentences.Enqueue(sentence);
@@ -119,10 +107,6 @@ public class DFortune : MonoBehaviour
         return;    
     }
 
-    public void CardChosen(int cardIndex) {
-        // condition = "haveChosen";
-    }
-
     public void DisplayNextSentence() {
         dControllerScript.isInDialogue = "fortuneteller";
         DSentence dSentence;
@@ -136,7 +120,7 @@ public class DFortune : MonoBehaviour
         
         if (sentences.Count == 0) {
             EndDialogue();
-            if (dialogueIndex == 0 || dialogueIndex == 3 || dialogueIndex == 4) {
+            if (dialogueIndex == 0 || dialogueIndex == 3 || dialogueIndex == 5) {
                 StartCarpet();
             }
             return;
