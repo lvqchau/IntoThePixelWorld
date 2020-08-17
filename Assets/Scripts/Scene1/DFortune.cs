@@ -21,16 +21,21 @@ public class DFortune : MonoBehaviour
     private DController dControllerScript;
     
     //each dialogue has own condition
-    //FortuneTeller: notPlay, playDone, havePlay
+    //FortuneTeller: noPlay, playDone, havePlay, notPlay, notWin
+
+    public void setCondition(string cond) {
+        condition = cond;
+        TriggerDialogue();
+    }
+
+    public string getCondition() {
+        return condition;
+    }
 
     public void playDoneCondition() {
         condition = "playDone";
         TriggerDialogue();
         DisplayNextSentence();
-    }
-
-    public void havePlayCondition() {
-        condition = "havePlay";
     }
 
     void OnMouseDown() {
@@ -67,15 +72,20 @@ public class DFortune : MonoBehaviour
         StartDialogues(dialogues);
     }
 
-    private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "playDone") {
-            dialogueIndex = 1;
-        } else if (condition == "havePlay") {
-            dialogueIndex = 2;
-        } else if (condition == "notPlay") {
-            dialogueIndex = 3;
+    private int SetDialogueIndex() {
+        switch (condition) {
+            case "playDone": return 1;
+            case "havePlay": return 2;
+            case "notPlay": return 3;
+            case "notWin": return 4;
+            case "haveChosen": return 5;
+            //noPlay
+            default: return 0;
         }
-        Debug.Log(condition);
+    }
+
+    private void StartDialogues(DDialogue[] dialogues) {
+        dialogueIndex = SetDialogueIndex();
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
             sentences.Enqueue(sentence);
@@ -92,15 +102,9 @@ public class DFortune : MonoBehaviour
         carpetCanvas.alpha = 1;
         carpetCanvas.blocksRaycasts = true;
 
-        condition = "notPlay";
-
-        carpetUI.SetActive(true);
-
         TriggerDialogue();
-    }
-
-    public void CardChosen(int cardIndex) {
-        // condition = "haveChosen";
+        carpetUI.SetActive(true);
+        return;    
     }
 
     public void DisplayNextSentence() {
@@ -116,7 +120,7 @@ public class DFortune : MonoBehaviour
         
         if (sentences.Count == 0) {
             EndDialogue();
-            if (dialogueIndex == 0 || dialogueIndex == 3) {
+            if (dialogueIndex == 0 || dialogueIndex == 3 || dialogueIndex == 5) {
                 StartCarpet();
             }
             return;
