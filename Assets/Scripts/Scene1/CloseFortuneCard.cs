@@ -8,12 +8,18 @@ public class CloseFortuneCard : MonoBehaviour
     public UnityEngine.Experimental.Rendering.Universal.Light2D light2D;
     private ShibaControl shibaScript;
     public CanvasGroup carpetCanvas;
+    private DFortune fortuneScript;
+    public GameObject FortuneTeller;
     public Button card;
+    public Button card2;
+    public Button card3;
+    private CloseFortuneCard cardOneFlip, cardTwoFlip, cardThreeFlip;
     public GameObject carpetUI, cardFront, cardBack;
     
     public float x, y, z;
     private float speed = 0.01f;
-    private bool cardBackIsActive;
+    public bool cardBackIsActive;
+    private bool isFlip;
     private int timer;
 
     public void DeactivateClick() {
@@ -21,7 +27,12 @@ public class CloseFortuneCard : MonoBehaviour
     }
 
     void Start() {
+        isFlip = false;
         cardBackIsActive = false;
+        cardOneFlip = card.GetComponent<CloseFortuneCard>();
+        cardTwoFlip = card2.GetComponent<CloseFortuneCard>();
+        cardThreeFlip = card3.GetComponent<CloseFortuneCard>();
+        fortuneScript = FortuneTeller.GetComponent<DFortune>();
         GameObject shiba = GameObject.Find("shiba");
         shibaScript = shiba.GetComponent<ShibaControl>();
     }
@@ -33,17 +44,25 @@ public class CloseFortuneCard : MonoBehaviour
     }
 
     public void StartFlip() {
-        OnHoverCard();
-        StartCoroutine(CalculateFlip());
+        if (!cardBackIsActive) cardBackIsActive = true;
+        ButtonFX cardSound = card.GetComponent<ButtonFX>();
+        isFlip = true;
+        if (cardTwoFlip.cardBackIsActive || cardThreeFlip.cardBackIsActive) {
+            cardSound.myFx.Stop();
+            
+        } else {
+            // fortuneScript.setCondition("notWin");
+            fortuneScript.setCondition("haveChosen");
+            StartCoroutine(CalculateFlip());
+        }
     }
 
     public void Flip() {
-        if (cardBackIsActive) {
+        
+        if (!cardBackIsActive) {
             cardBack.SetActive(false);
-            cardBackIsActive = false;
         } else {
             cardBack.SetActive(true);
-            cardBackIsActive = true;
         }
     }
 
@@ -52,7 +71,8 @@ public class CloseFortuneCard : MonoBehaviour
             yield return new WaitForSeconds(speed);
             transform.Rotate(new Vector3(x,y,z));
             timer++;
-
+            isFlip = true;
+            cardBackIsActive = true;
             if (timer==90 || timer==-90) {
                 Flip();
             }
@@ -70,20 +90,28 @@ public class CloseFortuneCard : MonoBehaviour
     }
 
     private void ClearCarpet() {
+        if (fortuneScript.getCondition() == "noPlay") {
+            fortuneScript.setCondition("notPlay");
+        }
+        fortuneScript.TriggerDialogue();
         carpetCanvas.interactable = false;
         carpetCanvas.alpha = 0;
         carpetCanvas.blocksRaycasts = false;
 
         carpetUI.SetActive(false);
+
+        shibaScript.canMove = true;
     }
 
     public void CloseCarpet() {
         shibaScript.isMoving = false;
         shibaScript.canMove = false;
-        //hide canvas group
-        ClearCarpet();
+        Debug.Log(cardOneFlip.timer);
+        Debug.Log(cardTwoFlip.timer);
+        Debug.Log(cardThreeFlip.timer);
+        if (cardOneFlip.timer == 0 && cardTwoFlip.timer == 0 && cardThreeFlip.timer == 0)
+            ClearCarpet();
         
-        shibaScript.canMove = true;
     }
 
 }

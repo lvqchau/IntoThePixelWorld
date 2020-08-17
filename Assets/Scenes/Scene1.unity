@@ -2053,13 +2053,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22482498, g: 0.17661981, b: 0.764151, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50be33767921041998342ee98b41d3f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd2ca93fcff2d43928609475808dfdd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2280,13 +2280,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50be33767921041998342ee98b41d3f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd2ca93fcff2d43928609475808dfdd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3107,13 +3107,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light2D: {fileID: 1223211271}
   carpetCanvas: {fileID: 2055695718}
+  FortuneTeller: {fileID: 2041091514}
   card: {fileID: 955162176}
+  card2: {fileID: 1692964844}
+  card3: {fileID: 1733929163}
   carpetUI: {fileID: 1666991483}
   cardFront: {fileID: 1140921039}
   cardBack: {fileID: 727444928}
   x: 0
   y: 1
   z: 0
+  cardBackIsActive: 0
 --- !u!114 &955162174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3431,13 +3435,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.0141509175, b: 0.0141509175, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50be33767921041998342ee98b41d3f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd2ca93fcff2d43928609475808dfdd7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6800,13 +6804,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light2D: {fileID: 392317049}
   carpetCanvas: {fileID: 2055695718}
+  FortuneTeller: {fileID: 2041091514}
   card: {fileID: 1692964844}
+  card2: {fileID: 1733929163}
+  card3: {fileID: 955162176}
   carpetUI: {fileID: 1666991483}
   cardFront: {fileID: 1997966984}
   cardBack: {fileID: 754008842}
   x: 0
   y: 1
   z: 0
+  cardBackIsActive: 0
 --- !u!114 &1692964842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7047,13 +7055,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light2D: {fileID: 0}
   carpetCanvas: {fileID: 2055695718}
-  card: {fileID: 0}
+  FortuneTeller: {fileID: 2041091514}
+  card: {fileID: 1692964844}
+  card2: {fileID: 1733929163}
+  card3: {fileID: 955162176}
   carpetUI: {fileID: 1666991483}
   cardFront: {fileID: 0}
   cardBack: {fileID: 0}
   x: 0
   y: 0
   z: 0
+  cardBackIsActive: 0
 --- !u!114 &1701146049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7681,13 +7693,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light2D: {fileID: 78274243}
   carpetCanvas: {fileID: 2055695718}
+  FortuneTeller: {fileID: 2041091514}
   card: {fileID: 1733929163}
+  card2: {fileID: 1692964844}
+  card3: {fileID: 955162176}
   carpetUI: {fileID: 1666991483}
   cardFront: {fileID: 1262744839}
   cardBack: {fileID: 1014785499}
   x: 0
   y: 1
   z: 0
+  cardBackIsActive: 0
 --- !u!1 &1776970797
 GameObject:
   m_ObjectHideFlags: 0
@@ -8852,6 +8868,27 @@ MonoBehaviour:
         type: 3}
     - characterName: Fortune Teller
       sentence: Sure, dear
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+  - condition: notWin
+    sentences:
+    - characterName: Fortune Teller
+      sentence: You can always try again if you fail.
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+  - condition: haveChosen
+    sentences:
+    - characterName: Shiba
+      sentence: Could I please see the other clues? I am curious of what the others
+        might be!
+      characterSprite: {fileID: 21300000, guid: c7a913a27a8f24164a7aadd6b3193b6b,
+        type: 3}
+    - characterName: Fortune Teller
+      sentence: Sure, but you have only one shot at life. Want another go?
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+    - characterName: Fortune Teller
+      sentence: Then just replay, my dear.
       characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
         type: 3}
   carpetUI: {fileID: 1666991483}

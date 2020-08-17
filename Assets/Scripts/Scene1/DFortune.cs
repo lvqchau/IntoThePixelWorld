@@ -21,7 +21,15 @@ public class DFortune : MonoBehaviour
     private DController dControllerScript;
     
     //each dialogue has own condition
-    //FortuneTeller: notPlay, playDone, havePlay
+    //FortuneTeller: noPlay, playDone, havePlay, notPlay, notWin
+
+    public void setCondition(string cond) {
+        condition = cond;
+    }
+
+    public string getCondition() {
+        return condition;
+    }
 
     public void playDoneCondition() {
         condition = "playDone";
@@ -67,6 +75,18 @@ public class DFortune : MonoBehaviour
         StartDialogues(dialogues);
     }
 
+    private int SetDialogueIndex() {
+        switch (condition) {
+            case "playDone": return 1;
+            case "havePlay": return 2;
+            case "notPlay": return 3;
+            case "notWin": return 4;
+            case "haveChosen": return 5;
+            //noPlay
+            default: return 0;
+        }
+    }
+
     private void StartDialogues(DDialogue[] dialogues) {
         if (condition == "playDone") {
             dialogueIndex = 1;
@@ -74,7 +94,9 @@ public class DFortune : MonoBehaviour
             dialogueIndex = 2;
         } else if (condition == "notPlay") {
             dialogueIndex = 3;
-        }
+        } else if (condition == "notWin") {
+            dialogueIndex = 4;
+        } else
         Debug.Log(condition);
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
@@ -92,11 +114,9 @@ public class DFortune : MonoBehaviour
         carpetCanvas.alpha = 1;
         carpetCanvas.blocksRaycasts = true;
 
-        condition = "notPlay";
-
-        carpetUI.SetActive(true);
-
         TriggerDialogue();
+        carpetUI.SetActive(true);
+        return;    
     }
 
     public void CardChosen(int cardIndex) {
@@ -116,7 +136,7 @@ public class DFortune : MonoBehaviour
         
         if (sentences.Count == 0) {
             EndDialogue();
-            if (dialogueIndex == 0 || dialogueIndex == 3) {
+            if (dialogueIndex == 0 || dialogueIndex == 3 || dialogueIndex == 4) {
                 StartCarpet();
             }
             return;
