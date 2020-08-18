@@ -1574,6 +1574,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6e7031032434046b08ffac15d6ace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &511470802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511470794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21f8a8fabbf3b4499074f9df72f9e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFull: 0000000000
+  slots:
+  - {fileID: 1052543870}
+  - {fileID: 779123679}
+  - {fileID: 1703301172}
+  - {fileID: 1471333202}
+  - {fileID: 1742827086}
 --- !u!1 &535942688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,7 +3638,7 @@ RectTransform:
   - {fileID: 1407134960}
   - {fileID: 814135378}
   m_Father: {fileID: 1278350084}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4972,8 +4991,8 @@ Transform:
   - {fileID: 340900084}
   - {fileID: 1995724637}
   - {fileID: 339022609}
-  - {fileID: 1776970798}
   - {fileID: 1031312235}
+  - {fileID: 1776970798}
   m_Father: {fileID: 1123703184}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8046,6 +8065,7 @@ GameObject:
   - component: {fileID: 1776970799}
   - component: {fileID: 1776970800}
   - component: {fileID: 1776970801}
+  - component: {fileID: 1776970802}
   m_Layer: 10
   m_Name: Apple
   m_TagString: Interactable
@@ -8065,7 +8085,7 @@ Transform:
   m_LocalScale: {x: 0.23901196, y: 0.27158353, z: 0.31558654}
   m_Children: []
   m_Father: {fileID: 1278350084}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1776970799
 SpriteRenderer:
@@ -8158,6 +8178,24 @@ MonoBehaviour:
   nameText: {fileID: 0}
   text: 
   cursor: {fileID: 2800000, guid: a8c20357668dd4b6abac45ef874821ce, type: 3}
+  cursorDefault: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
+--- !u!114 &1776970802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776970797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec408485c6b71a48b8bda000d79029d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: 21300000, guid: 0be8882b1351945cebe1468d0e0ee2b1, type: 3}
+  NPC:
+  - {fileID: 1782968296}
+  - {fileID: 2041091514}
+  - {fileID: 1068418654}
   cursorDefault: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
 --- !u!1 &1782968296
 GameObject:
@@ -8267,8 +8305,12 @@ MonoBehaviour:
         type: 3}
   - condition: doneKey
     sentences:
+    - characterName: Key Holder
+      sentence: Gosh, where is my key?
+      characterSprite: {fileID: 21300000, guid: e8d826f6bd21a44d4899c29ad53f6a23,
+        type: 3}
     - characterName: Shiba
-      sentence: Is this your key?
+      sentence: Excuse me, is this your key?
       characterSprite: {fileID: 21300000, guid: c7a913a27a8f24164a7aadd6b3193b6b,
         type: 3}
     - characterName: Key Holder
@@ -8303,6 +8345,7 @@ MonoBehaviour:
   chatBoxRenderer: {fileID: 1337689511}
   chatSprite: {fileID: 21300000, guid: 5d8f7171f1d154059b20ce8ad0f4ae0a, type: 3}
   apple: {fileID: 21300000, guid: 0be8882b1351945cebe1468d0e0ee2b1, type: 3}
+  pickupScript: {fileID: 1776970802}
 --- !u!61 &1782968300
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8715,31 +8758,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInDialogue: 
---- !u!1 &1915498074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4540336801720750428, guid: 871bcab48a3d44861859e35ef0ff0919,
-    type: 3}
-  m_PrefabInstance: {fileID: 679049667}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1915498081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915498074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d21f8a8fabbf3b4499074f9df72f9e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFull: 0000000000
-  slots:
-  - {fileID: 1052543870}
-  - {fileID: 779123679}
-  - {fileID: 1703301172}
-  - {fileID: 1471333202}
-  - {fileID: 1742827086}
 --- !u!1 &1995724635
 GameObject:
   m_ObjectHideFlags: 0
@@ -8879,6 +8897,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sp: {fileID: 21300000, guid: c392fd748dc1e469192aa96f663dd167, type: 3}
+  NPC:
+  - {fileID: 1782968296}
+  - {fileID: 2041091514}
+  - {fileID: 1068418654}
   cursorDefault: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
 --- !u!1 &1997966984
 GameObject:
@@ -9187,6 +9209,16 @@ MonoBehaviour:
     - characterName: Fortune Teller
       sentence: If you ever get stuck at the end, come and see me for a hint!
       characterSprite: {fileID: 21300000, guid: c7a913a27a8f24164a7aadd6b3193b6b,
+        type: 3}
+  - condition: notChosen
+    sentences:
+    - characterName: Fortune Teller
+      sentence: You should see me first before going!
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+    - characterName: Fortune Teller
+      sentence: What I have might be essential for your journey, dear!
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
         type: 3}
   carpetUI: {fileID: 1666991483}
   carpetCanvas: {fileID: 2055695718}

@@ -7,9 +7,10 @@ using UnityEngine.EventSystems;
 public class Pickup : MonoBehaviour
 {
     private Inventory inventory;
-    public Sprite sp;
+    public Sprite sp = null;
     //public SpriteRenderer itemButton;
     private ShibaControl shibaScript;
+    public GameObject[] NPC;
     public Texture2D cursorDefault;
 
     private void Start()
@@ -32,7 +33,7 @@ public class Pickup : MonoBehaviour
     IEnumerator WaitForDoneMoving()
     {
         yield return new WaitUntil(() => shibaScript.isMoving == false);
-        AddItemToInventory(null);
+        AddItemToInventory(sp);
     }
 
     public void AddItemToInventory(Sprite item) 
@@ -41,7 +42,6 @@ public class Pickup : MonoBehaviour
         {
             if (inventory.isFull[i] == false)
             {
-
                 inventory.isFull[i] = true;
                 if (item == null)
                 {
@@ -50,9 +50,26 @@ public class Pickup : MonoBehaviour
                 else
                 {
                     inventory.slots[i].sprite = item;
+                    if (item.name == "key") {
+                        DKeyHolder keyHolderScript = NPC[0].GetComponent<DKeyHolder>();
+                        keyHolderScript.setKeyCondition();
+                    }
                 }
                 Destroy(gameObject);
                 Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
+                break;
+            }
+        }
+    }
+
+    public void RemoveItemInInventory(string itemString) 
+    {
+        for (int i = 0; i < inventory.slots.Length; i++)
+        {
+            if (inventory.slots[i].sprite.name == itemString)
+            {
+                inventory.isFull[i] = false;
+                inventory.slots[i].sprite = null;
                 break;
             }
         }
