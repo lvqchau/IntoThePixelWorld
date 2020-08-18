@@ -14,7 +14,7 @@ public class DKeyHolder : MonoBehaviour
     public Sprite chatSprite;
 
     public Sprite apple;
-    // public Pickup pickupScript;
+    public Pickup pickupScript;
     private string condition;
 
     private int dialogueIndex = 0;
@@ -27,8 +27,9 @@ public class DKeyHolder : MonoBehaviour
 
     public void setKeyCondition() {
         condition = "doneKey";
-        // pickupScript.AddItemToInventory(apple);
         TriggerDialogue();
+        Debug.Log("gettingKeyInKeyHolder");
+        
     }
 
     //DKeyHolder.setKeyCondition()
@@ -92,6 +93,10 @@ public class DKeyHolder : MonoBehaviour
         shibaScript.isMoving = false;
         
         if (sentences.Count == 0) {
+            if (dialogueIndex == 1) {
+                pickupScript.AddItemToInventory(apple);
+                pickupScript.RemoveItemInInventory("key");
+            }
             EndDialogue();
             return;
         }
