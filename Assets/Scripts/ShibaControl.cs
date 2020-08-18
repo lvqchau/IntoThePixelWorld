@@ -53,11 +53,6 @@ public class ShibaControl : MonoBehaviour
                 SetTargetPosition();
             // }
         }
-        
-        if (isMoving && canMove) {
-            // StartCoroutine(PlaySounds());
-            Move();
-        }
     }
 
     // public bool IsOverUI() {
@@ -89,7 +84,7 @@ public class ShibaControl : MonoBehaviour
 
 
     private void FixedUpdate() {
-        if (isMoving) {
+        if (isMoving && canMove) {
             movement.x = mousePosition.x;
             movement.y = mousePosition.y;
             rb.velocity = movement;

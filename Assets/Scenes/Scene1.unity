@@ -1556,6 +1556,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &511470794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4540336801720750428, guid: 871bcab48a3d44861859e35ef0ff0919,
+    type: 3}
+  m_PrefabInstance: {fileID: 679049667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &511470801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511470794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb6e7031032434046b08ffac15d6ace5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &535942688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,12 +1890,12 @@ PrefabInstance:
     - target: {fileID: 4540336801720750419, guid: 871bcab48a3d44861859e35ef0ff0919,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -490
+      value: -528
       objectReference: {fileID: 0}
     - target: {fileID: 4540336801720750419, guid: 871bcab48a3d44861859e35ef0ff0919,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -128.8
+      value: -131
       objectReference: {fileID: 0}
     - target: {fileID: 4540336801720750419, guid: 871bcab48a3d44861859e35ef0ff0919,
         type: 3}
@@ -8284,6 +8302,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1707202091}
   chatBoxRenderer: {fileID: 1337689511}
   chatSprite: {fileID: 21300000, guid: 5d8f7171f1d154059b20ce8ad0f4ae0a, type: 3}
+  apple: {fileID: 21300000, guid: 0be8882b1351945cebe1468d0e0ee2b1, type: 3}
 --- !u!61 &1782968300
 BoxCollider2D:
   m_ObjectHideFlags: 0

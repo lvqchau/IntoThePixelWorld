@@ -12,7 +12,11 @@ public class DKeyHolder : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
+
+    public Sprite apple;
+    // public Pickup pickupScript;
     private string condition;
+
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
@@ -22,11 +26,15 @@ public class DKeyHolder : MonoBehaviour
     //KeyHolder: noKey, doneKey, haveKey
 
     public void setKeyCondition() {
-        condition = "haveKey";
+        condition = "doneKey";
+        // pickupScript.AddItemToInventory(apple);
+        TriggerDialogue();
     }
 
+    //DKeyHolder.setKeyCondition()
+
     void OnMouseDown() {
-        if (!EventSystem.current.IsPointerOverGameObject()) {
+        // if (!EventSystem.current.IsPointerOverGameObject()) {
             if (dControllerScript.isInDialogue == "none" ||
                 dControllerScript.isInDialogue == "keyholder") {
                 if (sentences.Count == initialCount) {
@@ -37,7 +45,7 @@ public class DKeyHolder : MonoBehaviour
                     DisplayNextSentence();
                 }
             }
-        }
+        // }
     }
 
     IEnumerator WaitForDoneMoving() {
