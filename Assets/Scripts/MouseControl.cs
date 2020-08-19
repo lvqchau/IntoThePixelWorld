@@ -33,6 +33,7 @@ public class MouseControl : MonoBehaviour
     }
 
     void Start() {
+        // Time.timeScale = 1;
         if (nameText && nameText.text != "continue")
             nameText.text = "";
         Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    

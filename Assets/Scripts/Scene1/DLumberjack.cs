@@ -21,8 +21,9 @@ public class DLumberjack : MonoBehaviour
     //each dialogue has own condition
     //Lumberjack: noPeace, donePeace, havePeace
 
-    public void setKeyCondition() {
-        condition = "havePaper";
+    public void setCondition(string cond) {
+        condition = cond;
+        TriggerDialogue();
     }
 
     void OnMouseDown() {
@@ -59,12 +60,17 @@ public class DLumberjack : MonoBehaviour
         StartDialogues(dialogues);
     }
 
-    private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "donePeace") {
-            dialogueIndex = 1;
-        } else if (condition == "havePeace") {
-            dialogueIndex = 2;
+    private int SetDialogueIndex() {
+        switch (condition) {
+            case "donePeace": return 1;
+            case "havePeace": return 2;
+            //noPeace
+            default: return 0;
         }
+    }
+
+    private void StartDialogues(DDialogue[] dialogues) {
+        dialogueIndex = SetDialogueIndex();
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
             sentences.Enqueue(sentence);
@@ -84,6 +90,9 @@ public class DLumberjack : MonoBehaviour
         shibaScript.isMoving = false;
         
         if (sentences.Count == 0) {
+            if (dialogueIndex == 1) {
+                setCondition("havePeace");
+            }
             EndDialogue();
             return;
         }

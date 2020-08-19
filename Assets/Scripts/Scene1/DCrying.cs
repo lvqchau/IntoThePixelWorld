@@ -4,37 +4,35 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class DKeyHolder : MonoBehaviour
+public class DCrying : MonoBehaviour
 {
     public DDialogue[] dialogues;
+    public Animator anim;
     private Queue<DSentence> sentences = new Queue<DSentence>();
     public TextMeshProUGUI characterBubble;
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer chatBoxRenderer;
-    public Sprite chatSprite;
-
-    public Sprite apple;
     public Pickup pickupScript;
+    public Sprite chatSprite;
     private string condition;
-
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
+    private DLumberjack lumberScript;
     private DController dControllerScript;
     
     //each dialogue has own condition
-    //KeyHolder: noKey, doneKey, haveKey
+    //Crying: noApple, doneApple, haveApple
 
-    public void setKeyCondition(string cond) {
+    public void setCondition(string cond) {
         condition = cond;
         TriggerDialogue();
     }
 
-
     void OnMouseDown() {
         if (!EventSystem.current.IsPointerOverGameObject()) {
             if (dControllerScript.isInDialogue == "none" ||
-                dControllerScript.isInDialogue == "keyholder") {
+                dControllerScript.isInDialogue == "crying") {
                 if (sentences.Count == initialCount) {
                     shibaScript.SetTargetPosition();
                     shibaScript.Move();
@@ -52,10 +50,12 @@ public class DKeyHolder : MonoBehaviour
     }
 
     void Start() {
-        condition = "noKey";
+        condition = "noApple";
         sentences = new Queue<DSentence>();
         GameObject shiba = GameObject.Find("shiba");
         shibaScript = shiba.GetComponent<ShibaControl>();
+        GameObject lumberjack = GameObject.Find("Lumberjack");
+        lumberScript = lumberjack.GetComponent<DLumberjack>();
         GameObject dC = GameObject.Find("RayDetector");
         dControllerScript = dC.GetComponent<DController>();
         TriggerDialogue();
@@ -65,12 +65,17 @@ public class DKeyHolder : MonoBehaviour
         StartDialogues(dialogues);
     }
 
-    private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "doneKey") {
-            dialogueIndex = 1;
-        } else if (condition == "haveKey") {
-            dialogueIndex = 2;
+    private int SetDialogueIndex() {
+        switch (condition) {
+            case "doneApple": return 1;
+            case "haveApple": return 2;
+            //noApple
+            default: return 0;
         }
+    }
+
+    private void StartDialogues(DDialogue[] dialogues) {
+        dialogueIndex = SetDialogueIndex();
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
             sentences.Enqueue(sentence);
@@ -79,9 +84,9 @@ public class DKeyHolder : MonoBehaviour
     }
 
     public void DisplayNextSentence() {
-        dControllerScript.isInDialogue = "keyholder";
+        dControllerScript.isInDialogue = "crying";
         DSentence dSentence;
-
+        
         spriteRenderer.sprite = null;
         characterBubble.text = "";
         chatBoxRenderer.sprite = null;
@@ -91,10 +96,10 @@ public class DKeyHolder : MonoBehaviour
         
         if (sentences.Count == 0) {
             if (dialogueIndex == 1) {
-                pickupScript.AddItemToInventory(apple);
-                pickupScript.RemoveItemInInventory("key");
-                setKeyCondition("haveKey");
-            } 
+                anim.SetBool("haveApple", true);
+                pickupScript.RemoveItemInInventory("apple");
+                setCondition("haveApple");
+            }
             EndDialogue();
             return;
         }
@@ -102,8 +107,8 @@ public class DKeyHolder : MonoBehaviour
 
         if (shibaScript.canMove == false) {
             dSentence = sentences.Dequeue();
-            chatBoxRenderer.sprite = chatSprite;
             spriteRenderer.sprite = dSentence.characterSprite;
+            chatBoxRenderer.sprite = chatSprite;
             characterBubble.text = dSentence.sentence;
         }
     }
@@ -111,9 +116,9 @@ public class DKeyHolder : MonoBehaviour
     public void EndDialogue() {
         dControllerScript.isInDialogue = "none";
         sentences.Clear();
-        spriteRenderer.sprite = null;
         characterBubble.text = "";
         chatBoxRenderer.sprite = null;
+        spriteRenderer.sprite = null;
         shibaScript.canMove = true;
         TriggerDialogue();
     }

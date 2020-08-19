@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bird
+  m_Name: crying
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,10 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 5682152037989702933, guid: 434bda0ce37554d33a20af895aa470bc,
+      value: {fileID: -3757888822033691353, guid: 638657fbcce9a4edc85d1cf93242efd6,
         type: 3}
     - time: 0.083333336
-      value: {fileID: -1180463043746884616, guid: 434bda0ce37554d33a20af895aa470bc,
+      value: {fileID: 1355830258175785810, guid: 638657fbcce9a4edc85d1cf93242efd6,
+        type: 3}
+    - time: 0.16666667
+      value: {fileID: -1482431026142036241, guid: 638657fbcce9a4edc85d1cf93242efd6,
+        type: 3}
+    - time: 0.25
+      value: {fileID: -5574572261441706343, guid: 638657fbcce9a4edc85d1cf93242efd6,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -44,14 +50,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 5682152037989702933, guid: 434bda0ce37554d33a20af895aa470bc, type: 3}
-    - {fileID: -1180463043746884616, guid: 434bda0ce37554d33a20af895aa470bc, type: 3}
+    - {fileID: -3757888822033691353, guid: 638657fbcce9a4edc85d1cf93242efd6, type: 3}
+    - {fileID: 1355830258175785810, guid: 638657fbcce9a4edc85d1cf93242efd6, type: 3}
+    - {fileID: -1482431026142036241, guid: 638657fbcce9a4edc85d1cf93242efd6, type: 3}
+    - {fileID: -5574572261441706343, guid: 638657fbcce9a4edc85d1cf93242efd6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
