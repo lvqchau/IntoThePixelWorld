@@ -89,10 +89,6 @@ public class DFortuneS2 : MonoBehaviour
         switch (condition)
         {
             case "playDone": return 1;
-            case "havePlay": return 2;
-            case "notPlay": return 3;
-            case "notWin": return 4;
-            case "haveChosen": return 5;
             //noPlay
             default: return 0;
         }
@@ -139,10 +135,7 @@ public class DFortuneS2 : MonoBehaviour
         if (sentences.Count == 0)
         {
             EndDialogue();
-            if (dialogueIndex == 0 || dialogueIndex == 3 || dialogueIndex == 5)
-            {
-                StartCarpet();
-            }
+            StartCarpet();
             return;
         }
         shibaScript.anim.SetBool("isMove", false);
