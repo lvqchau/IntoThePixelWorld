@@ -49,19 +49,15 @@ public class ShibaControl : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canMove) {
             idleAnimation = 0;
-            // if (!IsOverUI()) {
+            if (!IsOverUI()) {
                 SetTargetPosition();
-            // }
+            }
         }
     }
 
-    // public bool IsOverUI() {
-    //     PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current); 
-    //     eventDataCurrentPosition.position = new Vector2(mousePosition.x, mousePosition.y);
-    //     List<RaycastResult> results = new List<RaycastResult>();
-    //     EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-    //     return results.Count > 0;
-    // }
+    private bool IsOverUI() {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
 
     public void SetTargetPosition() {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

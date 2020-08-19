@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class DKeyHolder : MonoBehaviour
+public class DBird : MonoBehaviour
 {
     public DDialogue[] dialogues;
     private Queue<DSentence> sentences = new Queue<DSentence>();
@@ -13,17 +13,17 @@ public class DKeyHolder : MonoBehaviour
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
 
-    public Sprite apple;
-    public Pickup pickupScript;
+    // public Pickup pickupScript;
     private string condition;
 
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
+    private ShibaControl huskyScript;
     private DController dControllerScript;
     
     //each dialogue has own condition
-    //KeyHolder: noKey, doneKey, haveKey
+    //Bird: noSoup, doneSoup
 
     public void setKeyCondition(string cond) {
         condition = cond;
@@ -34,10 +34,12 @@ public class DKeyHolder : MonoBehaviour
     void OnMouseDown() {
         if (!EventSystem.current.IsPointerOverGameObject()) {
             if (dControllerScript.isInDialogue == "none" ||
-                dControllerScript.isInDialogue == "keyholder") {
+                dControllerScript.isInDialogue == "bird") {
                 if (sentences.Count == initialCount) {
                     shibaScript.SetTargetPosition();
                     shibaScript.Move();
+                    huskyScript.SetTargetPosition();
+                    huskyScript.Move();
                     StartCoroutine("WaitForDoneMoving");
                 } else {
                     DisplayNextSentence();
@@ -48,14 +50,17 @@ public class DKeyHolder : MonoBehaviour
 
     IEnumerator WaitForDoneMoving() {
         yield return new WaitUntil(() => shibaScript.isMoving == false);
+        yield return new WaitUntil(() => huskyScript.isMoving == false);
         DisplayNextSentence();
     }
 
     void Start() {
-        condition = "noKey";
+        condition = "noSoup";
         sentences = new Queue<DSentence>();
         GameObject shiba = GameObject.Find("shiba");
         shibaScript = shiba.GetComponent<ShibaControl>();
+        GameObject husky = GameObject.Find("husky");
+        huskyScript = husky.GetComponent<ShibaControl>();
         GameObject dC = GameObject.Find("RayDetector");
         dControllerScript = dC.GetComponent<DController>();
         TriggerDialogue();
@@ -65,12 +70,19 @@ public class DKeyHolder : MonoBehaviour
         StartDialogues(dialogues);
     }
 
-    private void StartDialogues(DDialogue[] dialogues) {
-        if (condition == "doneKey") {
-            dialogueIndex = 1;
-        } else if (condition == "haveKey") {
-            dialogueIndex = 2;
+    private int SetDialogueIndex() {
+        switch (condition) {
+            case "notSoup": return 1;
+            case "startSoup": return 2; //must yield Wait 5second to trigger dialogue doneSoup immediately
+            case "doneSoup": return 2;
+            case "haveSoup": return 3; //Add to inventory at start haveSoup
+            //noSoup
+            default: return 0;
         }
+    }
+
+    private void StartDialogues(DDialogue[] dialogues) {
+        dialogueIndex = SetDialogueIndex();
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences) {
             sentences.Enqueue(sentence);
@@ -78,29 +90,35 @@ public class DKeyHolder : MonoBehaviour
         initialCount = sentences.Count;
     }
 
+    private void StopMotion(ShibaControl script, bool state) {
+        script.canMove = state;
+        script.isMoving = state;
+        script.anim.SetBool("isMove", state);
+    } 
+
     public void DisplayNextSentence() {
-        dControllerScript.isInDialogue = "keyholder";
+        dControllerScript.isInDialogue = "bird";
         DSentence dSentence;
 
         spriteRenderer.sprite = null;
         characterBubble.text = "";
         chatBoxRenderer.sprite = null;
 
-        shibaScript.canMove = false;
-        shibaScript.isMoving = false;
+        StopMotion(shibaScript, false);
+        StopMotion(huskyScript, false);
         
         if (sentences.Count == 0) {
-            if (dialogueIndex == 1) {
-                pickupScript.AddItemToInventory(apple);
-                pickupScript.RemoveItemInInventory("key");
-                setKeyCondition("haveKey");
-            } 
+            if (dialogueIndex == 0) {
+                // setKeyCondition("notSoup");
+            }
+            // pickupScript.AddItemToInventory(soup);
+            // pickupScript.RemoveItemInInventory("key");
             EndDialogue();
             return;
         }
-        shibaScript.anim.SetBool("isMove", false);
+        
 
-        if (shibaScript.canMove == false) {
+        if (!shibaScript.canMove && !huskyScript.canMove) {
             dSentence = sentences.Dequeue();
             chatBoxRenderer.sprite = chatSprite;
             spriteRenderer.sprite = dSentence.characterSprite;
@@ -115,6 +133,7 @@ public class DKeyHolder : MonoBehaviour
         characterBubble.text = "";
         chatBoxRenderer.sprite = null;
         shibaScript.canMove = true;
+        huskyScript.canMove = true;
         TriggerDialogue();
     }
 
