@@ -4,38 +4,39 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class MouseControl : MonoBehaviour
+public class MouseInventory : MonoBehaviour
 {
-    public TextMeshProUGUI nameText;
-    public string text;
     public Texture2D cursor;
     public Texture2D cursorDefault;
+    private SpriteRenderer spriteRenderer;
 
     void Update() {
         if (EventSystem.current.IsPointerOverGameObject()) {
-            if (nameText) nameText.text = "";
             Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
         }
     }
 
-    public void OnMouseOver() {
-        if (!EventSystem.current.IsPointerOverGameObject()) {
-            if (nameText) nameText.text = text;
+    public void OnMouseEnter() {
+        if (spriteRenderer.sprite == null) {
+            return;
+        }
+        else if (!EventSystem.current.IsPointerOverGameObject()) {
             Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
         }
     }
 
-    public void OnMouseExit() {
-        if (nameText && nameText.text != "continue") {
-            nameText.text = "";
+    private void OnMouseDown() {
+        if (spriteRenderer.sprite.name == "scribble") {
+            // openPanel()
         }
+    }
+
+    private void OnMouseExit() {
         Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
     }
 
     void Start() {
-        // Time.timeScale = 1;
-        if (nameText && nameText.text != "continue")
-            nameText.text = "";
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
     }
 }

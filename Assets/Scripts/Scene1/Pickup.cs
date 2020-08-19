@@ -24,9 +24,13 @@ public class Pickup : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            shibaScript.SetTargetPosition();
-            shibaScript.Move();
-            StartCoroutine("WaitForDoneMoving");
+            if (sp && sp.name == "apple") {
+                return;
+            } else {
+                shibaScript.SetTargetPosition();
+                shibaScript.Move();
+                StartCoroutine("WaitForDoneMoving");
+            }
         }
     }
 
