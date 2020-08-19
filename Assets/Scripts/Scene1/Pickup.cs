@@ -50,12 +50,20 @@ public class Pickup : MonoBehaviour
                 else
                 {
                     inventory.slots[i].sprite = item;
-                    if (item.name == "key") {
-                        DKeyHolder keyHolderScript = NPC[0].GetComponent<DKeyHolder>();
-                        keyHolderScript.setKeyCondition();
+                    switch (item.name) {
+                        case "key":
+                            DKeyHolder keyHolderScript = NPC[0].GetComponent<DKeyHolder>();
+                            keyHolderScript.setKeyCondition("doneKey");
+                            break;
+                        case "apple":
+                            DCrying cryingScript = NPC[3].GetComponent<DCrying>();
+                            cryingScript.setCondition("doneApple");
+                            break;
+                        default: break;
                     }
                 }
-                Destroy(gameObject);
+                if (gameObject != null)
+                    Destroy(gameObject);
                 Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
                 break;
             }
@@ -66,11 +74,20 @@ public class Pickup : MonoBehaviour
     {
         for (int i = 0; i < inventory.slots.Length; i++)
         {
-            if (inventory.slots[i].sprite.name == itemString)
-            {
-                inventory.isFull[i] = false;
-                inventory.slots[i].sprite = null;
-                break;
+            if (inventory.slots[i].sprite) {
+                if (inventory.slots[i].sprite.name == itemString)
+                {
+                    switch (itemString) {
+                        case "apple": 
+                            DLumberjack lumberScript = NPC[2].GetComponent<DLumberjack>();
+                            lumberScript.setCondition("donePeace");
+                            break;
+                        default: break;
+                    }
+                    inventory.isFull[i] = false;
+                    inventory.slots[i].sprite = null;
+                    break;
+                }
             }
         }
     }
