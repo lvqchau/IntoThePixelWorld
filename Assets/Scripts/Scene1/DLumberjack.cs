@@ -26,6 +26,10 @@ public class DLumberjack : MonoBehaviour
         TriggerDialogue();
     }
 
+    public string getCondition() {
+        return condition;
+    }
+
     void OnMouseDown() {
         if (!EventSystem.current.IsPointerOverGameObject()) {
             if (dControllerScript.isInDialogue == "none" ||
