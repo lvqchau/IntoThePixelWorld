@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class DKatty : MonoBehaviour
+public class DChest : MonoBehaviour
 {
     public DDialogue[] dialogues;
     private Queue<DSentence> sentences = new Queue<DSentence>();
@@ -12,21 +12,28 @@ public class DKatty : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
-    public Sprite paper;
-    public PickUpHusky pickupScript;
     private string condition;
+    private int conditionCount;
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
     private DController dControllerScript;
-    private DChest chestScript;
 
     //each dialogue has own condition
-    //Katty: noWool, doneWool, haveWool
+    //chest: notEnoughData, enoughData
 
-    public void setKeyCondition(string newCondition)
+    public void setKeyCondition()
     {
-        condition = newCondition;
+        Debug.Log("hey");
+        conditionCount++;
+        if (conditionCount < 2)
+        {
+            condition = "notEnoughData";
+        }
+        else
+        {
+            condition = "enoughData";
+        }
         TriggerDialogue();
     }
 
@@ -35,7 +42,7 @@ public class DKatty : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (dControllerScript.isInDialogue == "none" ||
-                dControllerScript.isInDialogue == "katty")
+                dControllerScript.isInDialogue == "chest")
             {
                 if (sentences.Count == initialCount)
                 {
@@ -59,7 +66,8 @@ public class DKatty : MonoBehaviour
 
     void Start()
     {
-        condition = "noWool";
+        condition = "notEnoughData";
+        conditionCount = 0;
         sentences = new Queue<DSentence>();
         GameObject husky = GameObject.Find("husky");
         shibaScript = husky.GetComponent<ShibaControl>();
@@ -75,13 +83,9 @@ public class DKatty : MonoBehaviour
 
     private void StartDialogues(DDialogue[] dialogues)
     {
-        if (condition == "doneWool")
+        if (condition == "enoughData")
         {
             dialogueIndex = 1;
-        }
-        else if (condition == "haveWool")
-        {
-            dialogueIndex = 2;
         }
         sentences.Clear();
         foreach (DSentence sentence in dialogues[dialogueIndex].sentences)
@@ -93,7 +97,7 @@ public class DKatty : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        dControllerScript.isInDialogue = "katty";
+        dControllerScript.isInDialogue = "chest";
         DSentence dSentence;
 
         spriteRenderer.sprite = null;
@@ -105,13 +109,6 @@ public class DKatty : MonoBehaviour
 
         if (sentences.Count == 0)
         {
-            if (dialogueIndex == 1)
-            {
-                pickupScript.AddItemToInventory(paper);
-                pickupScript.RemoveItemInInventory("wool");
-                setKeyCondition("haveWool");
-                chestScript.setKeyCondition();
-            }
             EndDialogue();
             return;
         }
@@ -136,5 +133,4 @@ public class DKatty : MonoBehaviour
         shibaScript.canMove = true;
         TriggerDialogue();
     }
-
 }

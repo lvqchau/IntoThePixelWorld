@@ -19,6 +19,7 @@ public class DFortuneS2 : MonoBehaviour
     private int initialCount;
     private ShibaControl shibaScript;
     private DController dControllerScript;
+    private DChest chestScript;
 
     //each dialogue has own condition
     //FortuneTeller: noPlay, playDone, havePlay, notPlay, notWin
@@ -134,6 +135,10 @@ public class DFortuneS2 : MonoBehaviour
 
         if (sentences.Count == 0)
         {
+            if (dialogueIndex == 0)
+            {
+                chestScript.setKeyCondition();
+            }
             EndDialogue();
             StartCarpet();
             return;
