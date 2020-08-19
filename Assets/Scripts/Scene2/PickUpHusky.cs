@@ -51,7 +51,7 @@ public class PickUpHusky : MonoBehaviour
                     if (item.name == "wool")
                     {
                         DKatty kattyScript = NPC[0].GetComponent<DKatty>();
-                        kattyScript.setKeyCondition();
+                        kattyScript.setKeyCondition("doneWool");
                     }
                 }
                 Destroy(gameObject);

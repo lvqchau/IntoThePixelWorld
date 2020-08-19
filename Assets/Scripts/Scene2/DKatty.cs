@@ -23,10 +23,9 @@ public class DKatty : MonoBehaviour
     //each dialogue has own condition
     //Katty: noWool, doneWool, haveWool
 
-    public void setKeyCondition()
+    public void setKeyCondition(string newCondition)
     {
-        Debug.Log("done wool");
-        condition = "doneWool";
+        condition = newCondition;
         TriggerDialogue();
     }
 
@@ -109,6 +108,7 @@ public class DKatty : MonoBehaviour
             {
                 pickupScript.AddItemToInventory(paper);
                 pickupScript.RemoveItemInInventory("wool");
+                setKeyCondition("haveWool");
             }
             EndDialogue();
             return;
