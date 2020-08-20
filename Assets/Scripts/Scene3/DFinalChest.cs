@@ -6,15 +6,81 @@ using TMPro;
 
 public class DFinalChest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject carpetUI;
+    public CanvasGroup carpetCanvas;
+    private string condition;
+    private ShibaControl shibaScript;
+    private ShibaControl huskyScript;
+
+    //each dialogue has own condition
+    //Chest: locked, unlocked
+
+    public void setCondition(string cond)
     {
-        
+        condition = cond;
     }
 
-    // Update is called once per frame
-    void Update()
+    public string getCondition()
     {
-        
+        return condition;
+    }
+
+    void OnMouseDown()
+    {
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            shibaScript.SetTargetPosition();
+            shibaScript.Move();
+            huskyScript.SetTargetPosition();
+            huskyScript.Move();
+            StartCoroutine("WaitForDoneMoving");
+        }
+    }
+
+    IEnumerator WaitForDoneMoving()
+    {
+        yield return new WaitUntil(() => (shibaScript.isMoving == false && huskyScript.isMoving == false));
+        GameCanvasHandle();
+    }
+
+    void Start()
+    {
+        condition = "locked";
+        GameObject shiba = GameObject.Find("shiba");
+        shibaScript = shiba.GetComponent<ShibaControl>();
+        GameObject husky = GameObject.Find("husky");
+        huskyScript = husky.GetComponent<ShibaControl>();
+    }
+
+    public void StartCarpet()
+    {
+        shibaScript.canMove = false;
+        shibaScript.isMoving = false;
+        huskyScript.canMove = false;
+        huskyScript.isMoving = false;
+
+        carpetCanvas.interactable = true;
+        carpetCanvas.alpha = 1;
+        carpetCanvas.blocksRaycasts = true;
+
+        carpetUI.SetActive(true);
+        return;
+    }
+
+    public void GameCanvasHandle()
+    {
+        shibaScript.canMove = false;
+        shibaScript.isMoving = false;
+        huskyScript.canMove = false;
+        huskyScript.isMoving = false;
+        if (condition == "locked")
+        {
+            StartCarpet();
+            return;
+        }
+        shibaScript.canMove = true;
+        huskyScript.canMove = true;
+        shibaScript.anim.SetBool("isMove", false);
+        huskyScript.anim.SetBool("isMove", false);  
     }
 }
