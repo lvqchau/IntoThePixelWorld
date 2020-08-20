@@ -58,7 +58,10 @@ public class DialogueManager : MonoBehaviour
     public void DisplayNextSentence() {
         if (sentences.Count == 0) {
             dialogueText.alignment = TextAlignmentOptions.Center;
-            dialogueText.text = "NOW";
+            if (GetCurrentScene() != "EndingScene")
+                dialogueText.text = "NOW";
+            else
+                dialogueText.text = "BYE";
             EndDialogue();
             return;
         }
@@ -76,8 +79,10 @@ public class DialogueManager : MonoBehaviour
     }
 
     void EndDialogue() {
-        if (GetCurrentScene() == "Intro" || GetCurrentScene() == "Scene1Transition") {
+        if (GetCurrentScene() != "EndingScene") {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        } else {
+            Application.Quit();
         }
     }
 }
