@@ -65,6 +65,8 @@ public class DKatty : MonoBehaviour
         shibaScript = husky.GetComponent<ShibaControl>();
         GameObject dC = GameObject.Find("RayDetector");
         dControllerScript = dC.GetComponent<DController>();
+        GameObject chest = GameObject.Find("Chest");
+        chestScript = chest.GetComponent<DChest>();
         TriggerDialogue();
     }
 
