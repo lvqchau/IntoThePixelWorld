@@ -25,7 +25,7 @@ public class MouseControl : MonoBehaviour
         }
     }
 
-    private void OnMouseExit() {
+    public void OnMouseExit() {
         if (nameText && nameText.text != "continue") {
             nameText.text = "";
         }

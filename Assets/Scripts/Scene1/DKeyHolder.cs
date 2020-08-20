@@ -92,7 +92,7 @@ public class DKeyHolder : MonoBehaviour
         if (sentences.Count == 0) {
             if (dialogueIndex == 1) {
                 pickupScript.AddItemToInventory(apple);
-                pickupScript.RemoveItemInInventory("key");
+                pickupScript.RemoveItemInInventory("Unknown Key");
                 setKeyCondition("haveKey");
             } 
             EndDialogue();
