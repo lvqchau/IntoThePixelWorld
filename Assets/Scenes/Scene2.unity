@@ -2404,7 +2404,7 @@ GameObject:
   - component: {fileID: 743836613}
   - component: {fileID: 743836612}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PanelInside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3048,7 +3048,6 @@ GameObject:
   - component: {fileID: 916261376}
   - component: {fileID: 916261380}
   - component: {fileID: 916261379}
-  - component: {fileID: 916261378}
   - component: {fileID: 916261377}
   m_Layer: 0
   m_Name: Main Camera
@@ -3196,18 +3195,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &916261378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916261375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70a149e180114dd69a80c2d2239be4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &916261379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4226,11 +4213,11 @@ MonoBehaviour:
       characterSprite: {fileID: 21300000, guid: 3ef2de2f34f09bf44a8393522c7ff135,
         type: 3}
     - characterName: Katty
-      sentence: 'WOW!!! It seems like you found a treasure. '
+      sentence: WOWWW!!! Seems like you found a treasure!
       characterSprite: {fileID: 21300000, guid: 3ef2de2f34f09bf44a8393522c7ff135,
         type: 3}
     - characterName: Katty
-      sentence: Take this trash away!
+      sentence: Now, take this trash away if you like it so much!
       characterSprite: {fileID: 21300000, guid: 3ef2de2f34f09bf44a8393522c7ff135,
         type: 3}
     - characterName: Husky
@@ -4240,7 +4227,7 @@ MonoBehaviour:
   - condition: haveWool
     sentences:
     - characterName: Katty
-      sentence: I'm satisfied with this new ball. Don't mess with me!
+      sentence: Don't interrupt me! I'm playing with this new ball.
       characterSprite: {fileID: 21300000, guid: 3ef2de2f34f09bf44a8393522c7ff135,
         type: 3}
   characterBubble: {fileID: 482518624}
@@ -4649,7 +4636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carpetCanvas: {fileID: 2102581502}
   FortuneTeller: {fileID: 0}
-  carpetUI: {fileID: 743836610}
+  carpetUI: {fileID: 1729204919}
 --- !u!114 &1325371636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5037,24 +5024,30 @@ MonoBehaviour:
   - condition: noPlay
     sentences:
     - characterName: Fortune Teller
-      sentence: One must stand stiller than still. On reverse time travel...
-      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
-        type: 3}
-    - characterName: Husky
-      sentence: ...
-      characterSprite: {fileID: 21300000, guid: 6d393ac3ec8254f7ea795ae4898e063e,
-        type: 3}
-    - characterName: Fortune Teller
-      sentence: Do you see the cat overthere? Wanna be like her? No?
+      sentence: Oh, hi there. Have you ever heard of the reverse-time poem? It's
+        quite fascinating
       characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
         type: 3}
     - characterName: Fortune Teller
-      sentence: I have something to show you. Remember it or you will be stuck for
-        the rest of your life.
+      sentence: "It goes like this... \n\"One must stand stiller than still.\nOn
+        reverse time travel...\""
       characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
         type: 3}
     - characterName: Fortune Teller
-      sentence: Like that little kitty...
+      sentence: Ah right! That cat over there.
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+    - characterName: Fortune Teller
+      sentence: She never got the chance to leave. If only she knew what the poem
+        meant...
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+    - characterName: Fortune Teller
+      sentence: And now, I have something to show you.
+      characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
+        type: 3}
+    - characterName: Fortune Teller
+      sentence: REMEMBER IT, OR YOU WILL STUCK HERE FOREVER!
       characterSprite: {fileID: 21300000, guid: 33499a1e680fc47ad86c715f62cbf865,
         type: 3}
   - condition: playDone
@@ -5888,7 +5881,7 @@ GameObject:
   - component: {fileID: 1729204922}
   - component: {fileID: 1729204921}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PassPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

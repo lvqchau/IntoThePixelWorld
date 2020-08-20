@@ -46,6 +46,9 @@ public class DChest : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("chestttt");
+        Debug.Log(conditionCount);
+        Debug.Log(condition);
         if (condition == "finish") return;
         if (!EventSystem.current.IsPointerOverGameObject())
         {
