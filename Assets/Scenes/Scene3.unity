@@ -264,6 +264,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 219436857}
     m_Modifications:
+    - target: {fileID: 7221442549030501432, guid: 8027f1b0d8baf4616b2f18bc6da49a55,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11b60867b87b74a94bcd91705faf1893,
+        type: 3}
     - target: {fileID: 7221442549299376241, guid: 8027f1b0d8baf4616b2f18bc6da49a55,
         type: 3}
       propertyPath: m_Camera
