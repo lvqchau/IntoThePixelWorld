@@ -5,11 +5,16 @@ using UnityEngine;
 public class SubmitPassword : MonoBehaviour
 {
     public GameObject wrongMessage;
+    public GameObject congratMessage;
     public SpriteRenderer[] slots;
+    public GameObject Chest;
+    private DFinalChest chestScript;
 
     void Start()
     {
         wrongMessage.SetActive(false);
+        congratMessage.SetActive(false);
+        chestScript = Chest.GetComponent<DFinalChest>();
     }
 
     public void CheckPassword()
@@ -20,7 +25,8 @@ public class SubmitPassword : MonoBehaviour
         }
         else
         {
-            Debug.Log("correct");
+            congratMessage.SetActive(true);
+            chestScript.setCondition("unlocked");
         }
     }
 }
