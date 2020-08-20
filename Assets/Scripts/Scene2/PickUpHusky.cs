@@ -34,7 +34,8 @@ public class PickUpHusky : MonoBehaviour
     IEnumerator WaitForDoneMoving()
     {
         yield return new WaitUntil(() => shibaScript.isMoving == false);
-        AddItemToInventory(sp);
+        if (sp)
+            AddItemToInventory(sp);
     }
 
     public void AddItemToInventory(Sprite item)
@@ -58,8 +59,17 @@ public class PickUpHusky : MonoBehaviour
                         kattyScript.setKeyCondition("doneWool");
                     }
                 }
-                if (gameObject)
-                    Destroy(gameObject);
+                switch (sp.name) {
+                    case "Crumpled Paper": 
+                        SpriteRenderer paperObject = gameObject.GetComponent<SpriteRenderer>();
+                        paperObject.sprite = Resources.Load<Sprite>("yarn-ball");
+                        break;
+                    case "chest":
+                        break;
+                    default:
+                        Destroy(gameObject);
+                        break;
+                }
                 Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
                 break;
             }

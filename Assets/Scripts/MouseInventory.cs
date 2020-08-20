@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -24,7 +25,8 @@ public class MouseInventory : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (spriteRenderer.sprite && spriteRenderer.sprite.name == "Crumpled Paper") {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (spriteRenderer.sprite && spriteRenderer.sprite.name == "Crumpled Paper" && sceneName == "Scene2") {
             carpetCanvas.interactable = true;
             carpetCanvas.alpha = 1;
             carpetCanvas.blocksRaycasts = true;

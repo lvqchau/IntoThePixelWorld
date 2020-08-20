@@ -18,12 +18,17 @@ public class DChest : MonoBehaviour
     private int initialCount;
     private ShibaControl shibaScript;
     private DController dControllerScript;
+    private DMoveScene moveScript;
 
     public GameObject carpetUI;
     public CanvasGroup carpetCanvas;
 
     //each dialogue has own condition
     //chest: notEnoughData, enoughData
+
+    public void setFinishCondition() {
+        condition = "finish";
+    }
 
     public void setKeyCondition()
     {
@@ -32,15 +37,16 @@ public class DChest : MonoBehaviour
         {
             condition = "notEnoughData";
         }
-        else
+        else if (conditionCount == 2)
         {
             condition = "enoughData";
-        }
+        } 
         TriggerDialogue();
     }
 
     void OnMouseDown()
     {
+        if (condition == "finish") return;
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             if (dControllerScript.isInDialogue == "none" ||
@@ -84,17 +90,20 @@ public class DChest : MonoBehaviour
         GameObject errorObject = GameObject.Find("ErrorText");
         TextMeshProUGUI errorText = errorObject.GetComponent<TextMeshProUGUI>();
         if (inputText.text.ToLower() == "benjilost") {
-            Debug.Log("success");
             PickUpHusky pickupScript = gameObject.GetComponent<PickUpHusky>();
             Sprite spice = Resources.Load<Sprite>("Spice");
             Sprite clover = Resources.Load<Sprite>("Lucky Clover");
-            Debug.Log(clover);
-            Debug.Log(spice);
             errorText.color = new Color32(51, 255, 47, 255);
-            // pickupScript.AddItemToInvetory("")
             errorText.text = "You got a spice and a 4-leaf clover";
+            pickupScript.AddItemToInventory(spice);
+            pickupScript.AddItemToInventory(clover);
+            setFinishCondition();
+            GameObject blockObject = GameObject.Find("BlockScene");
+            if (blockObject) {
+                moveScript = blockObject.GetComponent<DMoveScene>();   
+                moveScript.changeCondition();
+            }
         } else {
-            Debug.Log("fail");
             errorText.color = new Color32(255, 83, 83, 255);
             errorText.text = "Incorrect";
         }
