@@ -19,12 +19,14 @@ public class DChest : MonoBehaviour
     private ShibaControl shibaScript;
     private DController dControllerScript;
 
+    public GameObject carpetUI;
+    public CanvasGroup carpetCanvas;
+
     //each dialogue has own condition
     //chest: notEnoughData, enoughData
 
     public void setKeyCondition()
     {
-        Debug.Log("hey");
         conditionCount++;
         if (conditionCount < 2)
         {
@@ -50,9 +52,9 @@ public class DChest : MonoBehaviour
                     shibaScript.Move();
                     StartCoroutine("WaitForDoneMoving");
                 }
-                else
-                {
+                else {
                     DisplayNextSentence();
+                    if (dialogueIndex == 1) StartCarpet();
                 }
             }
         }
@@ -74,6 +76,41 @@ public class DChest : MonoBehaviour
         GameObject dC = GameObject.Find("RayDetector");
         dControllerScript = dC.GetComponent<DController>();
         TriggerDialogue();
+    }
+
+    public void checkPassword() {
+        GameObject inputObject = GameObject.Find("PasswordField");
+        TMP_InputField inputText = inputObject.GetComponent<TMP_InputField>();
+        GameObject errorObject = GameObject.Find("ErrorText");
+        TextMeshProUGUI errorText = errorObject.GetComponent<TextMeshProUGUI>();
+        if (inputText.text.ToLower() == "benjilost") {
+            Debug.Log("success");
+            PickUpHusky pickupScript = gameObject.GetComponent<PickUpHusky>();
+            Sprite spice = Resources.Load<Sprite>("Spice");
+            Sprite clover = Resources.Load<Sprite>("Lucky Clover");
+            Debug.Log(clover);
+            Debug.Log(spice);
+            errorText.color = new Color32(51, 255, 47, 255);
+            // pickupScript.AddItemToInvetory("")
+            errorText.text = "You got a spice and a 4-leaf clover";
+        } else {
+            Debug.Log("fail");
+            errorText.color = new Color32(255, 83, 83, 255);
+            errorText.text = "Incorrect";
+        }
+    }
+
+    public void StartCarpet()
+    {
+        //carpetCanvas
+        shibaScript.canMove = false;
+        shibaScript.isMoving = false;
+        carpetCanvas.interactable = true;
+        carpetCanvas.alpha = 1;
+        carpetCanvas.blocksRaycasts = true;
+
+        carpetUI.SetActive(true);
+        return;
     }
 
     public void TriggerDialogue()

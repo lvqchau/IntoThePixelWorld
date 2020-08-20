@@ -104,20 +104,20 @@ public class DKatty : MonoBehaviour
 
         shibaScript.canMove = false;
         shibaScript.isMoving = false;
-
+        shibaScript.anim.SetBool("isMove", false);
         if (sentences.Count == 0)
         {
             if (dialogueIndex == 1)
             {
                 pickupScript.AddItemToInventory(paper);
-                pickupScript.RemoveItemInInventory("wool");
+                pickupScript.RemoveItemInInventory("Yarn Ball");
                 setKeyCondition("haveWool");
                 chestScript.setKeyCondition();
             }
             EndDialogue();
             return;
         }
-        shibaScript.anim.SetBool("isMove", false);
+        
 
         if (shibaScript.canMove == false)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using TMPro;
 
 public class MouseInventory : MonoBehaviour
@@ -11,8 +12,10 @@ public class MouseInventory : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private TextMeshProUGUI textHolder;
 
-    void Update() {
-    }
+    public GameObject carpetUI;
+    private CanvasGroup carpetCanvas;
+    private Sprite paperSprite;
+    private Image carpetImage;
 
     private void OnMouseOver() {
         if (spriteRenderer.sprite) {
@@ -21,8 +24,12 @@ public class MouseInventory : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (spriteRenderer.sprite && spriteRenderer.sprite.name == "scribble") {
-            // openPanel()
+        if (spriteRenderer.sprite && spriteRenderer.sprite.name == "Crumpled Paper") {
+            carpetCanvas.interactable = true;
+            carpetCanvas.alpha = 1;
+            carpetCanvas.blocksRaycasts = true;
+            carpetUI.SetActive(true);
+            carpetImage.sprite = Resources.Load<Sprite>("paper-hint");
         }
     }
 
@@ -35,6 +42,10 @@ public class MouseInventory : MonoBehaviour
     void Start() {
         textHolder = GetComponentInChildren<TextMeshProUGUI>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
+        GameObject canvasObject = GameObject.Find("FortuneCardCanvas");
+        if (carpetUI) {
+            carpetImage = carpetUI.GetComponentInChildren<Image>();
+            carpetCanvas = canvasObject.GetComponent<CanvasGroup>();
+        }
     }
 }

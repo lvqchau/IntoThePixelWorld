@@ -13,18 +13,19 @@ public class CloseCanvas : MonoBehaviour
 
     void Start()
     {
-        fortuneScript = FortuneTeller.GetComponent<DFortuneS2>();
+        if (FortuneTeller) fortuneScript = FortuneTeller.GetComponent<DFortuneS2>();
         GameObject husky = GameObject.Find("husky");
         shibaScript = husky.GetComponent<ShibaControl>();
     }
 
     private void ClearCarpet()
     {
-        if (fortuneScript.getCondition() == "noPlay")
-        {
-            fortuneScript.setCondition("playDone");
+        if (fortuneScript) {
+            if (fortuneScript.getCondition() == "noPlay") {
+                fortuneScript.setCondition("playDone");
+            }
+            fortuneScript.TriggerDialogue();
         }
-        fortuneScript.TriggerDialogue();
         carpetCanvas.interactable = false;
         carpetCanvas.alpha = 0;
         carpetCanvas.blocksRaycasts = false;

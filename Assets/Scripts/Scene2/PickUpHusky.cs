@@ -20,11 +20,14 @@ public class PickUpHusky : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            shibaScript.SetTargetPosition();
-            shibaScript.Move();
-            StartCoroutine("WaitForDoneMoving");
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+            if (gameObject.GetComponent<SpriteRenderer>().sprite.name == "chest") {
+                return;
+            } else {
+                shibaScript.SetTargetPosition();
+                shibaScript.Move();
+                StartCoroutine("WaitForDoneMoving");
+            }
         }
     }
 
@@ -36,6 +39,7 @@ public class PickUpHusky : MonoBehaviour
 
     public void AddItemToInventory(Sprite item)
     {
+
         for (int i = 0; i < inventory.slots.Length; i++)
         {
             if (inventory.isFull[i] == false)
@@ -48,13 +52,14 @@ public class PickUpHusky : MonoBehaviour
                 else
                 {
                     inventory.slots[i].sprite = item;
-                    if (item.name == "wool")
+                    if (item.name == "Yarn Ball")
                     {
                         DKatty kattyScript = NPC[0].GetComponent<DKatty>();
                         kattyScript.setKeyCondition("doneWool");
                     }
                 }
-                Destroy(gameObject);
+                if (gameObject)
+                    Destroy(gameObject);
                 Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
                 break;
             }
@@ -65,7 +70,7 @@ public class PickUpHusky : MonoBehaviour
     {
         for (int i = 0; i < inventory.slots.Length; i++)
         {
-            if (inventory.slots[i].sprite.name == itemString)
+            if (inventory.slots[i].sprite && inventory.slots[i].sprite.name == itemString)
             {
                 inventory.isFull[i] = false;
                 inventory.slots[i].sprite = null;

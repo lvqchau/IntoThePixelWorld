@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using TMPro;
 
 public class DFortuneS2 : MonoBehaviour
@@ -14,6 +15,7 @@ public class DFortuneS2 : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
+    public Sprite carpetSprite;
     private string condition;
     private int dialogueIndex = 0;
     private int initialCount;
@@ -113,7 +115,8 @@ public class DFortuneS2 : MonoBehaviour
         //carpetCanvas
         shibaScript.canMove = false;
         shibaScript.isMoving = false;
-
+        Image carpetImage = carpetUI.GetComponentInChildren<Image>();
+        carpetImage.sprite = carpetSprite;
         carpetCanvas.interactable = true;
         carpetCanvas.alpha = 1;
         carpetCanvas.blocksRaycasts = true;
@@ -134,7 +137,6 @@ public class DFortuneS2 : MonoBehaviour
 
         shibaScript.canMove = false;
         shibaScript.isMoving = false;
-
         if (sentences.Count == 0)
         {
             if (dialogueIndex == 0)
