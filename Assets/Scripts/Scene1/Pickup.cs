@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            if (sp && sp.name == "apple") {
+            if (sp && sp.name == "Apple") {
                 return;
             } else {
                 shibaScript.SetTargetPosition();
@@ -55,11 +55,11 @@ public class Pickup : MonoBehaviour
                 {
                     inventory.slots[i].sprite = item;
                     switch (item.name) {
-                        case "key":
+                        case "Unknown Key":
                             DKeyHolder keyHolderScript = NPC[0].GetComponent<DKeyHolder>();
                             keyHolderScript.setKeyCondition("doneKey");
                             break;
-                        case "apple":
+                        case "Apple":
                             DCrying cryingScript = NPC[3].GetComponent<DCrying>();
                             cryingScript.setCondition("doneApple");
                             break;

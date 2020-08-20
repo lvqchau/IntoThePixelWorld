@@ -9,33 +9,31 @@ public class MouseInventory : MonoBehaviour
     public Texture2D cursor;
     public Texture2D cursorDefault;
     private SpriteRenderer spriteRenderer;
+    private TextMeshProUGUI textHolder;
 
     void Update() {
-        if (EventSystem.current.IsPointerOverGameObject()) {
-            Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
-        }
     }
 
-    public void OnMouseEnter() {
-        if (spriteRenderer.sprite == null) {
-            return;
-        }
-        else if (!EventSystem.current.IsPointerOverGameObject()) {
-            Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
+    private void OnMouseOver() {
+        if (spriteRenderer.sprite) {
+            textHolder.text = spriteRenderer.sprite.name;
         }
     }
 
     private void OnMouseDown() {
-        if (spriteRenderer.sprite.name == "scribble") {
+        if (spriteRenderer.sprite && spriteRenderer.sprite.name == "scribble") {
             // openPanel()
         }
     }
 
     private void OnMouseExit() {
-        Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
+        if (spriteRenderer.sprite) {
+            textHolder.text = "";
+        }
     }
 
     void Start() {
+        textHolder = GetComponentInChildren<TextMeshProUGUI>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);    
     }

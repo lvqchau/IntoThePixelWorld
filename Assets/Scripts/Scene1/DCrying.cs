@@ -97,8 +97,9 @@ public class DCrying : MonoBehaviour
         if (sentences.Count == 0) {
             if (dialogueIndex == 1) {
                 anim.SetBool("haveApple", true);
-                pickupScript.RemoveItemInInventory("apple");
+                pickupScript.RemoveItemInInventory("Apple");
                 setCondition("haveApple");
+                lumberScript.setCondition("donePeace");
             }
             EndDialogue();
             return;
