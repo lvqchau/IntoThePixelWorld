@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3630,8 +3630,8 @@ MonoBehaviour:
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
     - characterName: Lumberjack
-      sentence: You just need a bird to make it, and a worm. Ah, almost forgot the
-        mushrooms.
+      sentence: You just need a bird to make it, and some mushrooms. Ah, almost forgot
+        the tummeric powder.
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
   - condition: havePeace
@@ -3642,7 +3642,7 @@ MonoBehaviour:
         type: 3}
     - characterName: Lumberjack
       sentence: But just in case your brain forgot the recipe. You just need a bird
-        to make it, a worm, and some mushrooms.
+        to make it, yellow spice, and some mushrooms.
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
   characterBubble: {fileID: 1320538466}
@@ -7870,7 +7870,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
