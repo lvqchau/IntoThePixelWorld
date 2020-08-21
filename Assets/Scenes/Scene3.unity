@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2187,7 +2187,8 @@ MonoBehaviour:
     - characterName: Bird
       sentence: What do you expect, 20 minutes?! That would be too long for a tiny
         game like this!
-      characterSprite: {fileID: 0}
+      characterSprite: {fileID: 21300000, guid: 0e96a5d3a1c3542a9ad6f35a37b72af0,
+        type: 3}
     - characterName: Shiba and Husky
       sentence: OK, madam...
       characterSprite: {fileID: 21300000, guid: 11b60867b87b74a94bcd91705faf1893,
@@ -2227,6 +2228,12 @@ MonoBehaviour:
         type: 3}
     - characterName: Bird
       sentence: Don't fret, they are always there, waiting for you two dogs!
+      characterSprite: {fileID: 21300000, guid: 0e96a5d3a1c3542a9ad6f35a37b72af0,
+        type: 3}
+  - condition: makingSoup
+    sentences:
+    - characterName: Bird
+      sentence: I'm trying my best!!!
       characterSprite: {fileID: 21300000, guid: 0e96a5d3a1c3542a9ad6f35a37b72af0,
         type: 3}
   characterBubble: {fileID: 903422822}
@@ -3762,6 +3769,7 @@ GameObject:
   - component: {fileID: 1030057454}
   - component: {fileID: 1030057453}
   - component: {fileID: 1030057452}
+  - component: {fileID: 1030057455}
   m_Layer: 0
   m_Name: mushrooms
   m_TagString: Untagged
@@ -3875,6 +3883,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1030057455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030057450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302771fb301a84c12b715ece7f8dd6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: 21300000, guid: c8b672645b1af4bccb9b520e25568065, type: 3}
+  NPC: []
+  cursorDefault: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
 --- !u!1 &1035182110
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,9 +4988,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302771fb301a84c12b715ece7f8dd6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
+  sp: {fileID: 21300000, guid: 9bd6ae2ba07b24e1787233a7aecf529b, type: 3}
   NPC: []
-  cursorDefault: {fileID: 0}
+  cursorDefault: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
 --- !u!1 &1323300137
 GameObject:
   m_ObjectHideFlags: 0

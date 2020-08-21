@@ -11,12 +11,15 @@ public class PickupSoup : MonoBehaviour
     private ShibaControl shibaScript;
     public GameObject[] NPC;
     public Texture2D cursorDefault;
+    private DBird birdScript;
 
     private void Start()
     {
         GameObject shiba = GameObject.Find("shiba");
+        GameObject bird = GameObject.Find("bird");
         inventory = shiba.GetComponent<Inventory>();
         shibaScript = shiba.GetComponent<ShibaControl>();
+        birdScript = bird.GetComponent<DBird>();
     }
 
     void OnMouseDown()
@@ -58,13 +61,9 @@ public class PickupSoup : MonoBehaviour
                 else
                 {
                     inventory.slots[i].sprite = item;
-                    /*if (item.name == "Yarn Ball")
-                    {
-                        DKatty kattyScript = NPC[0].GetComponent<DKatty>();
-                        kattyScript.setKeyCondition("doneWool");
-                    }*/
                 }
                 Destroy(gameObject);
+                birdScript.increaseItemCount();
                 Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
                 break;
             }
