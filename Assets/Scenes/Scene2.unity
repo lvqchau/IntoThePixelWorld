@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carpetCanvas: {fileID: 847893700}
-  FortuneTeller: {fileID: 0}
+  FortuneTeller: {fileID: 1364276595}
   carpetUI: {fileID: 332094306}
 --- !u!114 &470930144
 MonoBehaviour:
@@ -4615,7 +4615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.050980393, g: 0.12156863, b: 0.1254902, a: 1}
+  m_Color: {r: 0.003921569, g: 0.09411765, b: 0.09411765, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

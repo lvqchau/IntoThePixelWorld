@@ -20,7 +20,8 @@ public class CloseCanvas : MonoBehaviour
 
     private void ClearCarpet()
     {
-        if (fortuneScript) {
+        string name = carpetUI.GetComponent<Image>().sprite.name;
+        if (fortuneScript && name != "paper-hint") {
             if (fortuneScript.getCondition() == "noPlay") {
                 fortuneScript.setCondition("playDone");
             }
