@@ -9,17 +9,17 @@ public class DMoveScene : MonoBehaviour
 {
     public TextMeshProUGUI textField;
     private string condition = "noPass";
+    public SceneTransition sceneTransition;
 
     public void changeCondition() {
         condition = "pass";
     }
 
     private void moveToScene() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        sceneTransition.PlayAnimationTransition();
     }
 
     private void OnCollisionEnter2D(Collision2D character) {
-        Debug.Log("Enter");
         if (condition == "noPass")
             textField.text = "You have unfinised business!";
         else if (condition == "pass") {
@@ -28,7 +28,6 @@ public class DMoveScene : MonoBehaviour
     }
 
     private void OnCollisionExit2D(Collision2D character) {
-        Debug.Log("Leaving");
         textField.text = "";
     }
 

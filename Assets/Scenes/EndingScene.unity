@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -794,7 +794,7 @@ MonoBehaviour:
     - Let's hope after this journey, Benji will not put his focus on game too much.
     - Thanks for playing until now!
   startNow: 0
-  typingSpeed: 0.04
+  typingSpeed: 0.05
 --- !u!4 &2003543617
 Transform:
   m_ObjectHideFlags: 0

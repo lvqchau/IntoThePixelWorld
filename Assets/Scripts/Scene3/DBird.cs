@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DBird : MonoBehaviour
@@ -13,17 +14,25 @@ public class DBird : MonoBehaviour
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
 
-    // public Pickup pickupScript;
+    public PickupSoup pickupScript;
     private string condition;
-
+    private int itemCount = 0;
     private int dialogueIndex = 0;
     private int initialCount;
     private ShibaControl shibaScript;
     private ShibaControl huskyScript;
     private DController dControllerScript;
-    
+    public SceneTransition sceneTransition;
     //each dialogue has own condition
     //Bird: noSoup, doneSoup
+    public void increaseItemCount()
+    {
+        itemCount++;
+        if (itemCount == 2)
+        {
+            setKeyCondition("startSoup");
+        }
+    }
 
     public void setKeyCondition(string cond) {
         condition = cond;
@@ -54,6 +63,12 @@ public class DBird : MonoBehaviour
         DisplayNextSentence();
     }
 
+    IEnumerator WaitForMakingSoup()
+    {
+        yield return new WaitForSeconds(5);
+        setKeyCondition("doneSoup");
+    }
+
     void Start() {
         condition = "noSoup";
         sentences = new Queue<DSentence>();
@@ -74,8 +89,9 @@ public class DBird : MonoBehaviour
         switch (condition) {
             case "notSoup": return 1;
             case "startSoup": return 2; //must yield Wait 5second to trigger dialogue doneSoup immediately
-            case "doneSoup": return 2;
-            case "haveSoup": return 3; //Add to inventory at start haveSoup
+            case "doneSoup": return 3;
+            case "haveSoup": return 4; //Add to inventory at start haveSoup
+            case "makingSoup": return 5;
             //noSoup
             default: return 0;
         }
@@ -109,10 +125,24 @@ public class DBird : MonoBehaviour
         
         if (sentences.Count == 0) {
             if (dialogueIndex == 0) {
-                // setKeyCondition("notSoup");
+                setKeyCondition("notSoup");
             }
-            // pickupScript.AddItemToInventory(soup);
-            // pickupScript.RemoveItemInInventory("key");
+            else if (dialogueIndex == 2)
+            {
+                setKeyCondition("makingSoup");
+                pickupScript.RemoveItemInInventory("Lucky Clover");
+                pickupScript.RemoveItemInInventory("Spice");
+                pickupScript.RemoveItemInInventory("Mushroom");
+                pickupScript.RemoveItemInInventory("Bowls");
+                StartCoroutine("WaitForMakingSoup");
+            }
+            else if (dialogueIndex == 3)
+            {
+                setKeyCondition("haveSoup");
+            } else if (dialogueIndex == 4) {
+                sceneTransition.PlayAnimationTransition();
+            } 
+            
             EndDialogue();
             return;
         }
