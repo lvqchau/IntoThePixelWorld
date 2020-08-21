@@ -985,8 +985,8 @@ MonoBehaviour:
   startNow: 0
   typingSpeed: 0.05
   rawImage: {fileID: 15969906}
-  videoNormal: {fileID: 32900000, guid: f46dbd573e30443bb8b271bedfd0e187, type: 3}
-  videoGlitch: {fileID: 32900000, guid: 9c0dc4f62a55c4ed5a5b6b8f324a9652, type: 3}
+  videoNormal: {fileID: 32900000, guid: 7244d15e91af949519f137b6066a2d05, type: 3}
+  videoGlitch: {fileID: 32900000, guid: b1eb84df024f140acaa072636f8c0a26, type: 3}
   videoObject: {fileID: 1131965869}
   audioSource: {fileID: 1444875366}
 --- !u!4 &1009846437

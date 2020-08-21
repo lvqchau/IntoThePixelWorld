@@ -102,9 +102,11 @@ public class DialogueManager : MonoBehaviour
         videoPlayer.EnableAudioTrack(0, true);
         videoPlayer.SetTargetAudioSource(0, audioSource);
         if (type == "normal") {
-            videoPlayer.clip = videoNormal;
+            videoPlayer.url = System.IO.Path.Combine (Application.streamingAssetsPath,"VideoNormal.mov");
+            // videoPlayer.clip = videoNormal;
         } else {
-            videoPlayer.clip = videoGlitch;
+            videoPlayer.url = System.IO.Path.Combine (Application.streamingAssetsPath,"shiba-glitch.mov");
+            // videoPlayer.clip = videoGlitch;
         }
         videoPlayer.Play();
         yield return new WaitForSeconds(4);
