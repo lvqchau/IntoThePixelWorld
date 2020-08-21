@@ -31,7 +31,6 @@ public class CardGameController : MonoBehaviour
         {
             fileIndex = (fileIndex + 1) % 4;
         }
-        Debug.Log(fileIndex);
         RenderSprite();
     }
 

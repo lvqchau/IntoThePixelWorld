@@ -21,7 +21,6 @@ public class RayDetection : MonoBehaviour
             GameObject selection = hit.collider.gameObject;
             if (selection.CompareTag("Card")) {
                 DisplayTitle(hit.collider);
-                Debug.Log("card");
                 Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
             }
             if (selection.CompareTag("Interactable")) {

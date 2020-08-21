@@ -14,7 +14,7 @@ public class DBird : MonoBehaviour
     public SpriteRenderer chatBoxRenderer;
     public Sprite chatSprite;
 
-    // public Pickup pickupScript;
+    public PickupSoup pickupScript;
     private string condition;
     private int itemCount = 0;
     private int dialogueIndex = 0;
@@ -22,7 +22,7 @@ public class DBird : MonoBehaviour
     private ShibaControl shibaScript;
     private ShibaControl huskyScript;
     private DController dControllerScript;
-    
+    public SceneTransition sceneTransition;
     //each dialogue has own condition
     //Bird: noSoup, doneSoup
     public void increaseItemCount()
@@ -66,9 +66,7 @@ public class DBird : MonoBehaviour
     IEnumerator WaitForMakingSoup()
     {
         yield return new WaitForSeconds(5);
-        Debug.Log("Soup done");
         setKeyCondition("doneSoup");
-        // DisplayNextSentence();
     }
 
     void Start() {
@@ -132,19 +130,18 @@ public class DBird : MonoBehaviour
             else if (dialogueIndex == 2)
             {
                 setKeyCondition("makingSoup");
-                // pickupScript.RemoveItemInInventory("Clover Leaf");
-                // pickupScript.RemoveItemInInventory("Spice");
-                // pickupScript.RemoveItemInInventory("Bowls");
+                pickupScript.RemoveItemInInventory("Lucky Clover");
+                pickupScript.RemoveItemInInventory("Spice");
+                pickupScript.RemoveItemInInventory("Mushroom");
+                pickupScript.RemoveItemInInventory("Bowls");
                 StartCoroutine("WaitForMakingSoup");
             }
             else if (dialogueIndex == 3)
             {
                 setKeyCondition("haveSoup");
-                // pickupScript.AddItemToInventory(soup);
             } else if (dialogueIndex == 4) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            
+                sceneTransition.PlayAnimationTransition();
+            } 
             
             EndDialogue();
             return;
