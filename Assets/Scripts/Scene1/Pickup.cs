@@ -40,8 +40,21 @@ public class Pickup : MonoBehaviour
         AddItemToInventory(sp);
     }
 
+    private bool checkInInventory(string name)
+    {
+        for (int i = 0; i < inventory.slots.Length; i++)
+        {
+            if (inventory.slots[i].sprite && inventory.slots[i].sprite.name == name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void AddItemToInventory(Sprite item) 
     {
+        if (checkInInventory(item.name)) return;
         for (int i = 0; i < inventory.slots.Length; i++)
         {
             if (inventory.isFull[i] == false)
