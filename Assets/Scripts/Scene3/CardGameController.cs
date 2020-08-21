@@ -14,8 +14,21 @@ public class CardGameController : MonoBehaviour
         fileIndex = 0;
     }
 
+    private int getCurrentFileIndex()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (fileOptions[i] == imageContainer.sprite)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+
     void OnMouseDown()
     {
+        fileIndex = getCurrentFileIndex();
         if (gameObject.name == "downbutton")
         {
             if (fileIndex == 0)

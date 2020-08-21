@@ -35,6 +35,11 @@ public class DialogueManager : MonoBehaviour
     void Start() {
         sentences = new Queue<string>();
         TriggerDialogue();
+        if (GetCurrentScene() == "EndingScene")
+        {
+            GameObject backgroundSound = GameObject.Find("BgMusic");
+            backgroundSound.SetActive(false);
+        }
     }
 
     void Update() {
@@ -79,7 +84,9 @@ public class DialogueManager : MonoBehaviour
             if (GetCurrentScene() != "EndingScene")
                 dialogueText.text = "NOW";
             else
+            {
                 dialogueText.text = "BYE";
+            }
             EndDialogue();
             return;
         } 
