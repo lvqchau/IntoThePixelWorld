@@ -1752,6 +1752,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1123703184}
     m_Modifications:
+    - target: {fileID: 4540336800816320448, guid: 871bcab48a3d44861859e35ef0ff0919,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540336800816320448, guid: 871bcab48a3d44861859e35ef0ff0919,
+        type: 3}
+      propertyPath: m_LightVolumeOpacity
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540336800816320448, guid: 871bcab48a3d44861859e35ef0ff0919,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 2057154803
+      objectReference: {fileID: 0}
     - target: {fileID: 4540336801720750419, guid: 871bcab48a3d44861859e35ef0ff0919,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1977,7 +1992,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1782255543
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!1 &733355247
 GameObject:
@@ -2204,7 +2219,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1782255543
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &757539670 stripped
 RectTransform:
@@ -3303,7 +3318,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: -1782255543
-  m_SortingOrder: 6
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!1 &1031312234
 GameObject:
@@ -3630,8 +3645,8 @@ MonoBehaviour:
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
     - characterName: Lumberjack
-      sentence: You just need a bird to make it, and some mushrooms. Ah, almost forgot
-        the tummeric powder.
+      sentence: You just need a bird to make it, some mushrooms with yellow powder.
+        And a little bit of luck, of course.
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
   - condition: havePeace
@@ -3641,8 +3656,11 @@ MonoBehaviour:
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
     - characterName: Lumberjack
-      sentence: But just in case your brain forgot the recipe. You just need a bird
-        to make it, yellow spice, and some mushrooms.
+      sentence: 'But just in case your brain forgot the recipe. You need '
+      characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
+        type: 3}
+    - characterName: Lumberjack
+      sentence: A bird to make it. Yellow spice, mushrooms, and luck.
       characterSprite: {fileID: 21300000, guid: 771c08f928d324f5f9cf2094da474f14,
         type: 3}
   characterBubble: {fileID: 1320538466}
@@ -3889,8 +3907,8 @@ RectTransform:
   - {fileID: 1278350084}
   - {fileID: 2072728675}
   - {fileID: 1172472176}
-  - {fileID: 1218770496}
   - {fileID: 2055695717}
+  - {fileID: 1218770496}
   - {fileID: 1185471202}
   - {fileID: 803167157}
   m_Father: {fileID: 0}
@@ -4125,7 +4143,6 @@ GameObject:
   - component: {fileID: 1191954748}
   - component: {fileID: 1191954747}
   - component: {fileID: 1191954750}
-  - component: {fileID: 1191954751}
   - component: {fileID: 1191954752}
   m_Layer: 0
   m_Name: Main Camera
@@ -4230,18 +4247,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1191954751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191954746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70a149e180114dd69a80c2d2239be4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1191954752
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8357,7 +8362,7 @@ RectTransform:
   m_Children:
   - {fileID: 1666991484}
   m_Father: {fileID: 1123703184}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8546,7 +8551,7 @@ PrefabInstance:
     - target: {fileID: 1464580284220425467, guid: a23e3d20b965f4c4680efe71319f4ed6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1464580284220425467, guid: a23e3d20b965f4c4680efe71319f4ed6,
         type: 3}
@@ -8814,7 +8819,7 @@ PrefabInstance:
     - target: {fileID: 4853086813952374993, guid: 5df46f63fee7247758facfee6d3a7ed4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4853086813952374993, guid: 5df46f63fee7247758facfee6d3a7ed4,
         type: 3}
