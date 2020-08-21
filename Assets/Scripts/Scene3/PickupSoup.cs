@@ -71,7 +71,8 @@ public class PickupSoup : MonoBehaviour
                 {
                     inventory.slots[i].sprite = item;
                 }
-                Destroy(gameObject);
+                if (sp.name != "crate")
+                    Destroy(gameObject);
                 birdScript.increaseItemCount();
                 Cursor.SetCursor(cursorDefault, Vector2.zero, CursorMode.Auto);
                 break;

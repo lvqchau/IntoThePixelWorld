@@ -5134,7 +5134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302771fb301a84c12b715ece7f8dd6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
+  sp: {fileID: 21300000, guid: 9bd6ae2ba07b24e1787233a7aecf529b, type: 3}
   NPC: []
   cursorDefault: {fileID: 2800000, guid: 842d2cc12f6344d1ab8ae300cbc4fff9, type: 3}
 --- !u!1 &1323300137
