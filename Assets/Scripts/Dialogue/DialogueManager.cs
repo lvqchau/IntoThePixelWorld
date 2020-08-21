@@ -55,7 +55,9 @@ public class DialogueManager : MonoBehaviour
     }
 
     IEnumerator Type() {
-        if (sentences.Count == 3 || sentences.Count == 2) yield return new WaitForSeconds(4);    
+        if (GetCurrentScene() == "Intro") {
+            if (sentences.Count == 3 || sentences.Count == 2) yield return new WaitForSeconds(4);    
+        }
         curSentence = sentences.Dequeue();
         int length = curSentence.ToCharArray().Length;
         for (int i = 0; i < length; i++) {
@@ -65,11 +67,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void DisplayNextSentence() {
-        if (sentences.Count == 3) {
-            StartCoroutine(ShowVideo("normal"));
-        } else if (sentences.Count == 2) {
-            StartCoroutine(ShowVideo("light"));
-        } else if (sentences.Count == 0) {
+        if (GetCurrentScene() == "Intro") {
+            if (sentences.Count == 3) {
+                StartCoroutine(ShowVideo("normal"));
+            } else if (sentences.Count == 2) {
+                StartCoroutine(ShowVideo("light"));
+            }   
+        }
+        if (sentences.Count == 0) {
             dialogueText.alignment = TextAlignmentOptions.Center;
             if (GetCurrentScene() != "EndingScene")
                 dialogueText.text = "NOW";
