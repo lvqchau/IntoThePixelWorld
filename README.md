@@ -2,14 +2,17 @@
 ---
 ### Team members
 Long Vũ Quỳnh Châu - 1751054
+
 Trần Triều Thạnh - 1751020
 
 ### Description
 ***Into The Pixel World*** is a simple point-and-click game based around a shiba dog, and his online friend. 
+
 The story begins with Benji the Shiba getting sucked inside the laptop screen while playing a game. The journey will be about him and his friend figuring out how to get back, and why is this happening to them.
 
 ### Applications
 For a standalone build (Window/Linux/Mac), download this repository and build it using Unity.
+
 For an online experience, you can play at: [Simmer.io - Into the Pixel World](https://simmer.io/@lvqchau/into-the-pixel-world)
 
 ### Unity Version
